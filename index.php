@@ -25,6 +25,9 @@ elseif($pagina == 'emprestimos'){
 elseif($pagina == 'usuarios'){
     include 'views/usuarios.php';
 }
+elseif($pagina == 'inserir_usuario'){
+    include 'views/inserir_usuario.php';
+}
 else{
     include 'views/home.php';
 }

@@ -13,5 +13,5 @@ $consulta_livros = mysqli_query($conexao, $query);
 $query = "SELECT * FROM LIVROS";
 $consulta_emprestimos = mysqli_query($conexao, $query);
 
-$query = "SELECT * FROM LIVROS";
+$query = "SELECT * FROM USUARIOS";
 $consulta_usuarios = mysqli_query($conexao, $query);
