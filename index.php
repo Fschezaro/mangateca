@@ -16,6 +16,9 @@ else{
 if($pagina == 'livros'){
     include 'views/livros.php';
 }
+elseif($pagina == 'inserir_livro'){
+    include 'views/inserir_livro.php';
+}
 elseif($pagina == 'emprestimos'){
     include 'views/emprestimos.php';
 }
@@ -25,6 +28,5 @@ elseif($pagina == 'usuarios'){
 else{
     include 'views/home.php';
 }
-
 # Rodapé
 include 'footer.php';
