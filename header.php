@@ -11,7 +11,7 @@
     
     <header>
         <div class="container">
-            <img src="img/logo.jpeg" tittle="logo" alt="logo" height= 100>
+        <a href="?pagina=home"><img src="img/logo.jpeg" tittle="logo" alt="logo" height= 100 ></a>
             <div id=menu>
                 <a href="?pagina=home"> Home</a>
                 <a href="?pagina=livros"> Livros</a>
