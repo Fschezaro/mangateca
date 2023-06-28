@@ -14,17 +14,14 @@ else{
     $pagina = 'home';
 }
 
-switch($pagina){
-    case 'livros': include 'views/livros.php';break;
-    case 'inserir_livro': include 'views/inserir_livro.php';break;
-    case 'emprestimos': include 'views/emprestimos.php';break;
-    case 'inserir_emprestimo': include 'views/inserir_emprestimo.php';break;
-    case 'usuarios': include 'views/usuarios.php';break;
-    case 'inserir_usuario': include 'views/inserir_usuario.php';break;
-    default: 'views/home.php';break;
-
-
-}
+// switch($pagina){
+//     case 'livros': include 'views/livros.php';break;
+//     case 'inserir_livro': include 'views/inserir_livro.php';break;
+//     case 'emprestimos': include 'views/emprestimos.php';break;
+//     case 'inserir_emprestimo': include 'views/inserir_emprestimo.php';break;
+//     case 'usuarios': include 'views/usuarios.php';break;
+//     case 'inserir_usuario': include 'views/inserir_usuario.php';break;
+//     default: 'views/home.php';break;
 // if($pagina == 'livros'){
 //     include 'views/livros.php';
 // }

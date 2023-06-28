@@ -13,6 +13,4 @@
         echo '<td>'.$linha['permissao'].'</td></tr>';
     }
 ?>
-
-
 </table>

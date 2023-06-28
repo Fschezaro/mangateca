@@ -11,12 +11,12 @@
     
     <header>
         <div class="container">
-        <a href="?pagina=home"><img src="img/logo.jpeg" tittle="logo" alt="logo" height= 100 ></a>
+        <a href="?pagina=home"><img src="../img/logo.jpeg" tittle="logo" alt="logo" height= 100 ></a>
             <div id=menu>
-                <a href="?pagina=home"> Home</a>
-                <a href="?pagina=livros"> Livros</a>
-                <a href="?pagina=emprestimos"> Emprestimos</a>
-                <a href="?pagina=usuarios"> Usuários</a>
+                <a href="home.php"> Home</a>
+                <a href="livros.php"> Livros</a>
+                <a href="emprestimos.php"> Emprestimos</a>
+                <a href="usuarios.php"> Usuários</a>
             </div>
         </div>        
         
