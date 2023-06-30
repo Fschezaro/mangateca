@@ -1,16 +1,18 @@
-<a href="?pagina=inserir_usuario">Inserir novo usuario</a>
+<!DOCTYPE html>
+<html lang="en">
 
-<table style="border:1px solid #ccc; width: 100%">
-    <tr>
-            <th>usuario</th>
-            <th>permissão</th>
-    </tr>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <?php 
+<body>
+    <?php include '../Components/header.php'; ?>
 
-    while($linha = mysqli_fetch_array($consulta_usuarios)){
-        echo '<tr><td>'.$linha['nome'].'</td>';
-        echo '<td>'.$linha['permissao'].'</td></tr>';
-    }
-?>
-</table>
+    <a href="?pagina=inserir_usuario">Inserir novo usuario</a>
+
+</body>
+
+</html>

@@ -1,7 +1,5 @@
-</div>
-
 <footer>
-    <div class="container">
+    <div>
         Mangateca by Ferzi - 2023
     </div>
 

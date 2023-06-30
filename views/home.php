@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-    <?php include 'header.php';?>
-
+    <?php include '../Components/header.php';?>
     <h1>HOME</h1>
+    <?php include '../Components/footer.php';?>
 </body>
 </html>
