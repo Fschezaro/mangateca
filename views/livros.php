@@ -24,16 +24,21 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
     <h1>Mangas</h1>
     <a href="inserir_livro.php">Inserir novo manga</a>
     <table style="border:1px solid #ccc; width: 100%">
-        <tr>
-            <th>Titulo</th>
-            <th>categoria</th>
-        </tr>
-        <?php foreach ($resultado as $key => $livro) : ?>
+        <thead>
             <tr>
-                <td> <?= $livro["titulo"]; ?></td>
-                <td> <?= $livro["categoria"]; ?></td>
+                <th>Titulo</th>
+                <th>categoria</th>
             </tr>
-        <?php endforeach; ?>
+        </thead>
+        <tbody>
+            <?php foreach ($resultado as $key => $livro) : ?>
+
+                <tr>
+                    <td> <?= $livro["titulo"]; ?></td>
+                    <td> <?= $livro["categoria"]; ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
     <?php include '../Components/footer.php'; ?>
 </body>
