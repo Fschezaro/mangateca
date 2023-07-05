@@ -1,16 +1,20 @@
 <?php
 
-include 'db.php';
+require 'db.php';
 
 $codigo = $_POST['codigo'];
 $nome_livro = $_POST['titulo'];
 $categoria = $_POST['categoria'];
-$autor= $_POST['autor'];
-$editora= $_POST['editora'];
-$tipo= $_POST['tipo'];
+$autor = $_POST['autor'];
+$editora = $_POST['editora'];
+$tipo = $_POST['tipo'];
 
-$query = "INSERT INTO livros (cod,titulo,categoria,autor,editora,tipo) VALUES ($codigo,'$nome_livro','$categoria','$autor','$editora','$tipo')";
+try {
 
-mysqli_query($conexao, $query);
+    $query = $conexao->prepare("INSERT INTO livros (cod,titulo,categoria,autor,editora,tipo) VALUES (?,?,?,?,?,?)");
 
-header('location:index.php?pagina=livros');
+    $query->execute(array($codigo, $nome_livro, $categoria, $autor, $editora, $tipo));
+    header('Location:../views/livros.php');
+} catch (PDOException $e) {
+    echo "Erro:" . $e->getMessage();
+}

@@ -2,7 +2,7 @@
 <br>
 <!-- codigo,titulo,categoria,autor,editora,tipo -->
 
-<form method="post" action="processa_livro.php">
+<form method="post" action="../controllers/processa_livro.php">
     <label>Codigo</label>
     <br>
     <input type="text" name="codigo" placeholder="Insira o codigo do manga">
@@ -21,4 +21,5 @@
     <br><br>
     <input type="text" name="tipo" placeholder="Insira o tipo do manga">
     <br><br>
-    <input type="submit" value="Inserir manga" >
+    <input type="submit" value="Inserir manga">
+</form>
