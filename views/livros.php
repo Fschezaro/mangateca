@@ -21,7 +21,7 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <?php include '../Components/header.php'; ?>
-    <h1>LIVROS</h1>
+    <h1>Mangas</h1>
     <a href="inserir_livro.php">Inserir novo manga</a>
     <table style="border:1px solid #ccc; width: 100%">
         <tr>

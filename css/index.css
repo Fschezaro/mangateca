@@ -5,9 +5,9 @@ body{
         font-size: 17px;
 }
 header{ 
-        height: 100px; 
-        background-color: #262626; 
-         padding: 9px 0;
+        height: 90px; 
+        background-color: #b40505; 
+         padding: 10px 0;
 }
 footer{ 
         width: 100%;
@@ -22,5 +22,5 @@ footer{
 }
 
 #menu {float: right; padding: 30px 0;}
-#menu a{ text-decoration: none; padding: 45px 45px; color: #e3e3e3; text-shadow: 1px 1px 1px #333;}
+#menu a{ text-decoration: none; padding: 45px 45px; color: #9a0404; text-shadow: 1px 1px 1px #333;}
 #menu a:hover{ background-color: aqua;}
