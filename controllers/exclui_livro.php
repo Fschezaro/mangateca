@@ -1,12 +1,12 @@
 <?php
 require 'db.php';
 
-$id = filter_input(INPUT_GET, 'id');
+$id = $_GET['id'];
 
-if ($id){
-    $query = $conexao->prepare("DELETE FROM livros WHERE id= :id");
-    $query -> bindValue('id',$id);
-    $query -> execute();
-}else{header("location: ../views/livros.php");}
+$query = $conexao->prepare("DELETE FROM livros WHERE id=?");
+if ($query->execute(array($id))) {
+    session_start();
+    $_SESSION['mensagem'] = "Registro escluido com sucesso";
+}
+
 header("location: ../views/livros.php");
-?>
