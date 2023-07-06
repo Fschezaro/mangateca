@@ -4,7 +4,7 @@ require 'db.php';
 
 $titulo = $_POST['titulo'];
 $categoria = $_POST['categoria'];
-$autor = $_POST['autor']
+$autor = $_POST['autor'];
 $editora = $_POST['editora'];
 
 try {

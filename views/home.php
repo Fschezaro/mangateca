@@ -9,9 +9,9 @@
 </head>
 
 <body>
-    <?php include '../Components/header.php'; ?>
+    <?php include '../components/header.php'; ?>
     <h1>HOME</h1>
-    <?php include '../Components/footer.php'; ?>
+    <?php include '../components/footer.php'; ?>
 </body>
 
 </html>

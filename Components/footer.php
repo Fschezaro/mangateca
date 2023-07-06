@@ -1,6 +1,6 @@
 <footer>
     <div>
-        Mangateca by Ferzi - 2023
+        Mangateca by Fer - 2023
     </div>
 
 </footer>
