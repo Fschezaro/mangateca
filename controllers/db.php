@@ -1,8 +1,8 @@
 <?php
 
 $servidor = "localhost";
-$usuario = "root";
-$senha = "";
+$usuario = "admin";
+$senha = "bancofer$$";
 $db = "mangateca";
 
 $conexao = new PDO("mysql:dbname=$db;host=$servidor", $usuario, $senha);
