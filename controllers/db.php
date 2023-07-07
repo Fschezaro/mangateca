@@ -1,6 +1,6 @@
 <?php
 
-$servidor = "localhost";
+$servidor = "172.16.84.196";
 $usuario = "teste";
 $senha = "teste123";
 $db = "mangateca";
