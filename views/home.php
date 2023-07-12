@@ -21,32 +21,30 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <?php include '../components/header.php'; ?>
-    <h1><br></h1>
-    <table class="tabela">
-        <thead>
-            <tr>
-                <!-- <th>Id</th> -->
-                <th>Titulo</th>
-                <th>Categoria</th>
-                <th>Autor</th>
-                <th>Editora</th>
-                <th>N°</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($resultado as $key => $livro) : ?>
-
+    <div class="corposite">
+        <table class="tabela">
+            <thead>
                 <tr>
-                    <!-- <td> <?= $livro["id"]; ?></td> -->
-                    <td> <?= $livro["titulo"]; ?></td>
-                    <td> <?= $livro["categoria"]; ?></td>
-                    <td> <?= $livro["autor"]; ?></td>
-                    <td> <?= $livro["editora"]; ?></td>
-                    <td> <?= $key ?> </td>
+                    <th>Titulo</th>
+                    <th>Categoria</th>
+                    <th>Autor</th>
+                    <th>Editora</th>
+                    <th>N°</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php foreach ($resultado as $key => $livro) : ?>
+                    <tr>
+                        <td> <?= $livro["titulo"]; ?></td>
+                        <td> <?= $livro["categoria"]; ?></td>
+                        <td> <?= $livro["autor"]; ?></td>
+                        <td> <?= $livro["editora"]; ?></td>
+                        <td> <?= $key ?> </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
     <?php include '../components/footer.php'; ?>
 </body>
 

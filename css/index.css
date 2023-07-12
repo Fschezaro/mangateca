@@ -3,6 +3,7 @@
 body{ 
         font-family: helvetica, arial; 
         font-size: 17px;
+        background: linear-gradient(to right, rgb(79, 119, 226),rgb(17, 20, 170));
 }
 header{ 
         height: 90px; 
@@ -19,7 +20,15 @@ footer{
         font-size: 12px; 
         color: #ffffff;
 }
-.tabela{ border: 1px solid black; margin-left: auto; margin-right: auto; width: 900px; }
+
+.corposite{
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #ffffff;
+        width: 1200px;
+}
+
+.tabela{ border: 5px solid dodgerblue; margin-left: auto; margin-right: auto; width: 900px; }
 .tabela td, tr{ border: 1px solid black; margin: auto; padding: 10px; }
 #menu { padding: 30px 0;}
 #menu a{ text-decoration: none; padding: 45px 45px; color: #ffffff; text-shadow: 1px 1px 1px #333;}
