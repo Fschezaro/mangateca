@@ -3,7 +3,8 @@ require '../controllers/db.php';
 
 if (isset($_POST['pesquisa'])) {
     $pesquisa = $_POST['pesquisa'];
-    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE categoria LIKE '%$pesquisa%'");
+    $coluna = $_POST['coluna'];
+    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE $coluna LIKE '%$pesquisa%'");
 } else {
     $query = $conexao->prepare("SELECT * FROM LIVROS");
 }
@@ -12,7 +13,7 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -25,26 +26,15 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <?php include '../components/header.php'; ?>
 
-    <div class="row">
-        <form action="home.php" method="post">
-            <div class="col-12 col-md-6 d-flex p-2  mx-auto">
-                <label class="form-label" for="input1"></label>
-                <input name="pesquisa" type="search" class="form-control" id="input1">
-                <button type="submit" class="btn btn-primary mx-3"> Pesquisa</button>
-            </div>
-        </form>
-    </div>
+    <div class="container py-4">
 
-    <div class="corposite">
-
-        <table class="table table-striped">
+        <table class="table table-striped table-hover table-responsive border border-dark">
             <thead>
                 <tr>
                     <th>Titulo</th>
                     <th>Categoria</th>
                     <th>Autor</th>
                     <th>Editora</th>
-                    <th>N°</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,7 +44,6 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                         <td> <?= $livro["categoria"]; ?></td>
                         <td> <?= $livro["autor"]; ?></td>
                         <td> <?= $livro["editora"]; ?></td>
-                        <td> <?= $key ?> </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
