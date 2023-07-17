@@ -4,9 +4,9 @@ require '../controllers/db.php';
 if (isset($_POST['pesquisa'])) {
     $pesquisa = $_POST['pesquisa'];
     $coluna = $_POST['coluna'];
-    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE $coluna LIKE '%$pesquisa%' AND estado = '1'");
+    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE $coluna LIKE '%$pesquisa%' AND estado = '0'");
 } else {
-    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE estado = '1'");
+    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE estado = '0'");
 }
 $query->execute();
 $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -26,15 +26,15 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <?php include '../components/header.php'; ?>
     <div class="container d-flex justify-content-center">
-    <?php
-    session_start();
-    if (isset($_SESSION['mensagem'])) {
-        echo $_SESSION['mensagem'];
-        unset($_SESSION['mensagem']);
-    } ?>
+        <?php
+        session_start();
+        if (isset($_SESSION['mensagem'])) {
+            echo $_SESSION['mensagem'];
+            unset($_SESSION['mensagem']);
+        } ?>
     </div>
     <div class="container d-flex justify-content-center my-3">
-        <form class="d-flex me-5" action="../views/livros.php" method="post">
+        <form class="d-flex me-5" action="../views/desativados.php" method="post">
             <select class="btn btn-primary" name="coluna">
                 <option value="titulo">Título</option>
                 <option value="categoria">Categoria</option>
@@ -45,33 +45,32 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
             <button type="submit" class="btn btn-primary"> Pesquisa</button>     
         </form>
     </div>
-    <div class="container">
-    <table class="table table-striped border border-dark table-hover table-responsive border">
-        <thead>
-            <tr>
-                <th class="text-center">Titulo</th>
-                <th class="text-center">Categoria</th>
-                <th class="text-center">Autor</th>
-                <th class="text-center">Editora</th>
-                <th class="text-center">Tipo</th>
-                <th class="text-center" class="text-center" colspan="2"><a class="col-12 btn btn-outline-danger" href="desativados.php">Desativados</a></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($resultado as $key => $livro) : ?>
-
+    <div class="container ">
+        <table class="table table-striped border border-dark table-hover table-responsive border">
+            <thead>
                 <tr>
-                    <td class="text-center" > <?= $livro["titulo"]; ?></td>
-                    <td class="text-center"> <?= $livro["categoria"]; ?></td>
-                    <td class="text-center"> <?= $livro["autor"]; ?></td>
-                    <td class="text-center"> <?= $livro["editora"]; ?></td>
-                    <td class="text-center"> <?= $livro["tipo"]; ?></td>
-                    <td class="text-center"><a class="btn btn-secondary" href="edita_livro.php?id=<?= $livro['id']; ?>">Editar</a></td>
-                    <td class="text-center"><a class="btn btn-danger btn-block" href="../controllers/exclui_livro.php?id=<?= $livro['id']; ?>">Desativar</a></td>
+                    <th class="text-center">Titulo</th>
+                    <th class="text-center">Categoria</th>
+                    <th class="text-center">Autor</th>
+                    <th class="text-center">Editora</th>
+                    <th class="text-center">Tipo</th>
+                    <th class="text-center" colspan="2"><a class="col-12  btn btn-outline-success" href="livros.php">Ativos</a></th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php foreach ($resultado as $key => $livro) : ?>
+
+                    <tr>
+                        <td class="text-center"> <?= $livro["titulo"]; ?></td>
+                        <td class="text-center"> <?= $livro["categoria"]; ?></td>
+                        <td class="text-center"> <?= $livro["autor"]; ?></td>
+                        <td class="text-center"> <?= $livro["editora"]; ?></td>
+                        <td class="text-center"> <?= $livro["tipo"]; ?></td>
+                        <td class="text-center" colspan="2"><a class="btn btn-success col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>">Ativar</a></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
     <?php include '../components/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

@@ -6,8 +6,9 @@ $titulo = $_POST['titulo'];
 $categoria = $_POST['categoria'];
 $autor = $_POST['autor'];
 $editora = $_POST['editora'];
+$tipo = $_POST['tipo'];
 
-$query = $conexao->prepare("UPDATE livros SET titulo = ?, categoria = ?, autor = ?, editora = ? WHERE id = ?");
-$query->execute(array($titulo, $categoria, $autor, $editora, $id));
+$query = $conexao->prepare("UPDATE livros SET titulo = ?, categoria = ?, autor = ?, editora = ?, tipo = ? WHERE id = ?");
+$query->execute(array($titulo, $categoria, $autor, $editora,$tipo, $id));
 
 header("location: ../views/livros.php");
