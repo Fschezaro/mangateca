@@ -40,9 +40,10 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                 <option value="categoria">Categoria</option>
                 <option value="autor">Autor</option>
                 <option value="editora">Editora</option>
+                <option value="tipo">Tipo</option>
             </select>
             <input class="form-control mx-4" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
-            <button type="submit" class="btn btn-primary"> Pesquisa</button>     
+            <button type="submit" class="btn btn-primary"> Pesquisa</button>
         </form>
     </div>
     <div class="container ">
