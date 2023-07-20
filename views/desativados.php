@@ -19,19 +19,41 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mangateca home</title>
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="icon" type="image/png" href="../img/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
 <body>
     <?php include '../components/header.php'; ?>
-    <div class="container d-flex justify-content-center">
-        <?php
-        session_start();
-        if (isset($_SESSION['mensagem'])) {
-            echo $_SESSION['mensagem'];
-            unset($_SESSION['mensagem']);
-        } ?>
+    <div class="container d-flex">
+        <div class="flex-fill justify-content-center my-3">
+            <div class="row">                
+                <form class="d-flex me-5" action="../views/home.php" method="post">
+                    <div class="col">
+                        <select class="form-select btn btn-outline-dark" name="coluna">
+                            <option value="titulo">Título</option>
+                            <option value="categoria">Categoria</option>
+                            <option value="autor">Autor</option>
+                            <option value="editora">Editora</option>
+                            <option value="tipo">Tipo</option>
+                        </select>
+                    </div>
+                    <div class="col-md-8 mx-4">
+                        <input class="form-control" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-outline-success">Pesquisa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="align-self-center">
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <a href="home.php" type="button" class="btn btn-success">Ativos</a>
+                <button href="" type="button" class="btn btn-warning">Pendentes</button>
+                <a href="desativados.php" type="button" class="btn btn-danger">Inativos</a>
+            </div>
+        </div>
     </div>
     <div class="container d-flex justify-content-center my-3">
         <form class="d-flex me-5" action="../views/desativados.php" method="post">

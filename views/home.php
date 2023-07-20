@@ -18,28 +18,37 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mangateca home</title>
-    <link rel="stylesheet" href="../css/index.css">
+    <title>Mangateca</title>
+    <link rel="icon" type="image/png" href="../img/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
 <body>
     <?php include '../components/header.php'; ?>
-    <div class="container d-flex justify-content-center my-3">
-        <form class="d-flex me-5" action="../views/home.php" method="post">
-            <select class="btn btn-primary" name="coluna">
-                <option value="titulo">Título</option>
-                <option value="categoria">Categoria</option>
-                <option value="autor">Autor</option>
-                <option value="editora">Editora</option>
-                <option value="tipo">Tipo</option>
-            </select>
-            <input class="form-control mx-4" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
-            <button type="submit" class="btn btn-primary"> Pesquisa</button>
-        </form>
+    <div class="container my-3 ">
+        <div class="flex-fill me-3">
+                <form class="d-flex" action="../views/home.php" method="post">
+                        <select class="form-select btn btn-outline-dark " name="coluna">
+                            <option value="titulo">Título</option>
+                            <option value="categoria">Categoria</option>
+                            <option value="autor">Autor</option>
+                            <option value="editora">Editora</option>
+                            <option value="tipo">Tipo</option>
+                        </select>
+                        <input class="form-control  mx-3" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
+                        <button type="submit" class="btn btn-outline-success">Pesquisa</button>
+                </form>
+        </div>
+        <div class="d-flex align-items-center">
+            <div class="btn-group justify-content-center align-itens" role="group" aria-label="Basic mixed styles example">
+                <a href="home.php" type="button" class="btn btn-success">Ativos</a>
+                <button href="" type="button" class="btn btn-warning">Pendentes</button>
+                <a href="desativados.php" type="button" class="btn btn-danger">Inativos</a>
+            </div>
+        </div>
     </div>
     <div class="container">
-        <table class="table table-striped table-hover table-responsive border border-dark">
+        <table class="table table-striped table-hover table-bordered table-responsive">
             <thead>
                 <tr>
                     <th class="text-center">Titulo</th>
