@@ -25,51 +25,36 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <?php include '../components/header.php'; ?>
-    <div class="container d-flex">
-        <div class="flex-fill justify-content-center my-3">
-            <div class="row">                
-                <form class="d-flex me-5" action="../views/home.php" method="post">
-                    <div class="col">
-                        <select class="form-select btn btn-outline-dark" name="coluna">
-                            <option value="titulo">Título</option>
-                            <option value="categoria">Categoria</option>
-                            <option value="autor">Autor</option>
-                            <option value="editora">Editora</option>
-                            <option value="tipo">Tipo</option>
-                        </select>
-                    </div>
-                    <div class="col-md-8 mx-4">
-                        <input class="form-control" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-outline-success">Pesquisa</button>
-                    </div>
-                </form>
-            </div>
+    <div class="container d-flex justify-content-between">
+        <div class="col-12 col-md-8 my-3">
+            <form class="row" action="../views/home.php" method="post">
+                <div class="col">
+                    <select class="form-select btn btn-outline-dark" name="coluna">
+                        <option value="titulo">Título</option>
+                        <option value="categoria">Categoria</option>
+                        <option value="autor">Autor</option>
+                        <option value="editora">Editora</option>
+                        <option value="tipo">Tipo</option>
+                    </select>
+                </div>
+                <div class="col-8 col-md-8">
+                    <input class="form-control mx-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-outline-success">Pesquisa</button>
+                </div>
+            </form>
         </div>
         <div class="align-self-center">
-            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <a href="home.php" type="button" class="btn btn-success">Ativos</a>
-                <button href="" type="button" class="btn btn-warning">Pendentes</button>
-                <a href="desativados.php" type="button" class="btn btn-danger">Inativos</a>
+            <div class="btn-group vertical-align-middle" role="group" aria-label="Basic mixed styles example">
+                <a href="home.php" role="button" class="btn btn-success">Ativos</a>
+                <a href="home.php" role="button" class="btn btn-warning">Pendentes</a>
+                <a href="desativados.php" role="button" class="btn btn-danger">Inativos</a>
             </div>
         </div>
     </div>
-    <div class="container d-flex justify-content-center my-3">
-        <form class="d-flex me-5" action="../views/desativados.php" method="post">
-            <select class="btn btn-primary" name="coluna">
-                <option value="titulo">Título</option>
-                <option value="categoria">Categoria</option>
-                <option value="autor">Autor</option>
-                <option value="editora">Editora</option>
-                <option value="tipo">Tipo</option>
-            </select>
-            <input class="form-control mx-4" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
-            <button type="submit" class="btn btn-primary"> Pesquisa</button>
-        </form>
-    </div>
     <div class="container ">
-        <table class="table table-striped border border-dark table-hover table-responsive border">
+        <table class="table table-striped table-hover table-bordered table-responsive">
             <thead>
                 <tr>
                     <th class="text-center">Titulo</th>

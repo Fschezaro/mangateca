@@ -25,21 +25,27 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <?php include '../components/header.php'; ?>
-    <div class="container my-3 ">
-        <div class="flex-fill me-3">
-                <form class="d-flex" action="../views/home.php" method="post">
-                        <select class="form-select btn btn-outline-dark " name="coluna">
-                            <option value="titulo">Título</option>
-                            <option value="categoria">Categoria</option>
-                            <option value="autor">Autor</option>
-                            <option value="editora">Editora</option>
-                            <option value="tipo">Tipo</option>
-                        </select>
-                        <input class="form-control  mx-3" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
-                        <button type="submit" class="btn btn-outline-success">Pesquisa</button>
-                </form>
+    <div class="container d-flex justify-content-between">
+        <div class="col-12 col-md-8 my-3">
+            <form class="row" action="../views/home.php" method="post">
+                <div class="col">
+                    <select class="form-select btn btn-outline-dark " name="coluna">
+                        <option value="titulo">Título</option>
+                        <option value="categoria">Categoria</option>
+                        <option value="autor">Autor</option>
+                        <option value="editora">Editora</option>
+                        <option value="tipo">Tipo</option>
+                    </select>
+                </div>
+                <div class="col-8 col-md-8">
+                    <input class="form-control mx-3" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-outline-success">Pesquisa</button>
+                </div>
+            </form>
         </div>
-        <div class="d-flex align-items-center">
+        <div class="align-self-center">
             <div class="btn-group justify-content-center align-itens" role="group" aria-label="Basic mixed styles example">
                 <a href="home.php" type="button" class="btn btn-success">Ativos</a>
                 <button href="" type="button" class="btn btn-warning">Pendentes</button>

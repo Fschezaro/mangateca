@@ -47,7 +47,7 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
         </form>
     </div>
     <div class="container">
-        <table class="table table-striped border border-dark table-hover table-responsive border">
+        <table class="table table-striped table-hover table-bordered table-responsive ">
             <thead>
                 <tr>
                     <th class="text-center">Titulo</th>
