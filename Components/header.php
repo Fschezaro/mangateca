@@ -1,6 +1,11 @@
 <nav class="navbar navbar-dark bg-dark">
-  <div class="container-fluid">
+  <div class="container-fluid d-flex">
     <a class="navbar-brand" href="../views/home.php">Mangateca</a>
+    <a class="navbar-brand" href="../views/home.php">Home</a>
+    <a class="navbar-brand" href="../views/inserir_livro.php">Adicionar</a>
+    <a class="navbar-brand" href="../views/edita_livro.php">Editar</a>
+    <a class="navbar-brand" href="#"></a>
+    <a class="navbar-brand" href="#"></a>
   </div>
 </nav>
 <!-- <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">

@@ -4,9 +4,9 @@ require '../controllers/db.php';
 if (isset($_POST['pesquisa'])) {
     $pesquisa = $_POST['pesquisa'];
     $coluna = $_POST['coluna'];
-    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE $coluna LIKE '%$pesquisa%' AND estado = '1'");
+    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE $coluna LIKE '%$pesquisa%'");
 } else {
-    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE estado = '1'");
+    $query = $conexao->prepare("SELECT * FROM LIVROS");
 }
 $query->execute();
 $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -33,19 +33,6 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
             unset($_SESSION['mensagem']);
         } ?>
     </div>
-    <div class="container d-flex justify-content-center my-3">
-        <form class="d-flex me-5" action="../views/livros.php" method="post">
-            <select class="btn btn-primary" name="coluna">
-                <option value="titulo">Título</option>
-                <option value="categoria">Categoria</option>
-                <option value="autor">Autor</option>
-                <option value="editora">Editora</option>
-                <option value="tipo">Tipo</option>
-            </select>
-            <input class="form-control mx-4" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
-            <button type="submit" class="btn btn-primary"> Pesquisa</button>
-        </form>
-    </div>
     <div class="container">
         <table class="table table-striped table-hover table-bordered table-responsive ">
             <thead>
@@ -55,7 +42,7 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                     <th class="text-center">Autor</th>
                     <th class="text-center">Editora</th>
                     <th class="text-center">Tipo</th>
-                    <th class="text-center" class="text-center" colspan="2"><a class="col-12 btn btn-outline-danger" href="desativados.php">Desativados</a></th>
+                    <th class="text-center" class="text-center" colspan="3"> Edição</th>
                 </tr>
             </thead>
             <tbody>
@@ -69,6 +56,7 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                         <td class="text-center"> <?= $livro["tipo"]; ?></td>
                         <td class="text-center"><a class="btn btn-secondary" href="edita_livro.php?id=<?= $livro['id']; ?>">Editar</a></td>
                         <td class="text-center"><a class="btn btn-danger btn-block" href="../controllers/exclui_livro.php?id=<?= $livro['id']; ?>">Desativar</a></td>
+                        <td class="text-center"><a class="btn btn-success col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>">Ativar</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

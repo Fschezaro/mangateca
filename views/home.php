@@ -3,8 +3,7 @@ require '../controllers/db.php';
 
 if (isset($_POST['pesquisa'])) {
     $pesquisa = $_POST['pesquisa'];
-    $coluna = $_POST['coluna'];
-    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE $coluna LIKE '%$pesquisa%' AND estado = '1'");
+    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE estado = '1' AND ( LIKE '%$pesquisa%')");
 } else {
     $query = $conexao->prepare("SELECT * FROM LIVROS WHERE estado = '1'");
 }
@@ -28,15 +27,6 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
     <div class="container d-flex justify-content-between">
         <div class="col-12 col-md-8 my-3">
             <form class="row" action="../views/home.php" method="post">
-                <div class="col">
-                    <select class="form-select btn btn-outline-dark " name="coluna">
-                        <option value="titulo">Título</option>
-                        <option value="categoria">Categoria</option>
-                        <option value="autor">Autor</option>
-                        <option value="editora">Editora</option>
-                        <option value="tipo">Tipo</option>
-                    </select>
-                </div>
                 <div class="col-8 col-md-8">
                     <input class="form-control mx-3" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
                 </div>

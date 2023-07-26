@@ -3,8 +3,7 @@ require '../controllers/db.php';
 
 if (isset($_POST['pesquisa'])) {
     $pesquisa = $_POST['pesquisa'];
-    $coluna = $_POST['coluna'];
-    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE $coluna LIKE '%$pesquisa%' AND estado = '0'");
+    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE estado = '0' AND (titulo LIKE '%$pesquisa%' OR categoria LIKE '%$pesquisa%' OR autor LIKE '%$pesquisa%' OR editora LIKE '%$pesquisa%' OR tipo LIKE '%$pesquisa%')");
 } else {
     $query = $conexao->prepare("SELECT * FROM LIVROS WHERE estado = '0'");
 }
@@ -27,16 +26,7 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
     <?php include '../components/header.php'; ?>
     <div class="container d-flex justify-content-between">
         <div class="col-12 col-md-8 my-3">
-            <form class="row" action="../views/home.php" method="post">
-                <div class="col">
-                    <select class="form-select btn btn-outline-dark" name="coluna">
-                        <option value="titulo">Título</option>
-                        <option value="categoria">Categoria</option>
-                        <option value="autor">Autor</option>
-                        <option value="editora">Editora</option>
-                        <option value="tipo">Tipo</option>
-                    </select>
-                </div>
+            <form class="row" action="../views/desativados.php" method="post">
                 <div class="col-8 col-md-8">
                     <input class="form-control mx-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
                 </div>
@@ -62,7 +52,6 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                     <th class="text-center">Autor</th>
                     <th class="text-center">Editora</th>
                     <th class="text-center">Tipo</th>
-                    <th class="text-center" colspan="2"><a class="col-12  btn btn-outline-success" href="livros.php">Ativos</a></th>
                 </tr>
             </thead>
             <tbody>
@@ -74,7 +63,6 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                         <td class="text-center"> <?= $livro["autor"]; ?></td>
                         <td class="text-center"> <?= $livro["editora"]; ?></td>
                         <td class="text-center"> <?= $livro["tipo"]; ?></td>
-                        <td class="text-center" colspan="2"><a class="btn btn-success col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>">Ativar</a></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

@@ -11,39 +11,52 @@
 
 <body>
     <?php include '../components/header.php'; ?>
-    <div class="d-flex justify-content-center my-3">
-        <div class="text-center p-3 d-flex justify-content-center border border-black">
-            <form method="post" action="../controllers/processa_livro.php">
-                <label class="d-flex justify-content-center">Título</label>
-                <br>
-                <input class="form-control text-center" type="text" name="titulo" placeholder="Insira o título">
-                <br>
-                <label class="d-flex justify-content-center">Categoria</label>
-                <br>
-                <input class="form-control text-center" type="text" name="categoria" placeholder="Insira a categoria">
-                <br>
-                <label class="d-flex justify-content-center">Autor</label>
-                <br>
-                <input class="form-control text-center" type="text" name="autor" placeholder="Insira o autor">
-                <br>
-                <label class="d-flex justify-content-center">Editora</label>
-                <br>
-                <input class="form-control text-center" type="text" name="editora" placeholder="Insira a editora">
-                <br>
-                <label class="d-flex justify-content-center">Tipo</label>
-                <br>
-                <select class="btn btn-primary" name="tipo">
-                    <option name="tipo" value="Manga">Manga</option>
-                    <option name="tipo" value="Revista">Revista</option>
-                    <option name="tipo" value="Objeto">Objeto</option>
-                </select>
-                <br>
-                <br>
-                <input class="btn btn-primary col-12" type="submit" value="Inserir manga">
-            </form>
-        </div>
+    <div class="container my-3">
+        <form method="post" action="../controllers/processa_livro.php">
+            <div class="row ">
+                <div class="col">
+                    <label>Título</label>
+                    <input class="form-control" type="text" name="titulo" placeholder="Insira o título">
+                </div>
+                <div class="col">
+                    <label>Categoria</label>
+                    <input class="form-control" type="text" name="categoria" placeholder="Insira a categoria">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label>Autor</label>
+                    <input class="form-control" type="text" name="autor" placeholder="Insira o autor">
+                </div>
+                <div class="col">
+                    <label>Editora</label>
+                    <input class="form-control" type="text" name="editora" placeholder="Insira a editora">
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-6 col-md-6">
+                    <label>Tipo</label>
+                    <select class="form-select" name="tipo">
+                        <option value="Manga">Manga</option>
+                        <option value="Revista">Revista</option>
+                        <option value="Objeto">Objeto</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input class="btn btn-success col-12 mt-3 align-middle" type="submit" value="Inserir manga">
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-    <?php include '../components/footer.php'; ?>
+    <div class="col-12 position-absolute bottom-0">
+        <footer>
+            <div class="p-4 bg-dark text-white d-flex justify-content-center">
+                Mangateca by Fer - 2023 ©
+            </div>
+        </footer>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
