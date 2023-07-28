@@ -10,4 +10,4 @@ if ($query->rowCount()) {
     $result =  $query->fetch(PDO::FETCH_ASSOC);
     return $result;
 }
-header("location: ../views/livros.php");
+header("location: ../views/ativos.php");

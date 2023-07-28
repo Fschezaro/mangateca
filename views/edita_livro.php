@@ -14,32 +14,22 @@
 <body>
     <?php include '../components/header.php'; ?>
     <div class="d-flex justify-content-center my-3">
-    <div class="text-center p-3 flex-column d-flex justify-content-center border border-black">
-    <form method="POST" action="../controllers/edita_livro.php">
-        <input type="hidden" name="id" value="<?= $result['id']; ?>">
-            <label class="d-flex justify-content-center">Título</label>
-            <br>
-            <input class="form-control text-center" type="text" name="titulo" value="<?= $result['titulo']; ?>">
-            <br>
-            <label class="d-flex justify-content-center">Categoria</label>
-            <br>
-            <input class="form-control text-center" type="text" name="categoria" value="<?= $result['categoria']; ?>">
-            <br>
-            <label class="d-flex justify-content-center">Autor</label>
-            <br>
-            <input class="form-control text-center" type="text" name="autor" value="<?= $result['autor']; ?>">
-            <br>
-            <label class="d-flex justify-content-center">Editora</label>
-            <br>
-            <input class="form-control text-center" type="text" name="editora" value="<?= $result['editora']; ?>">
-            <br>
-            <label class="d-flex justify-content-center">Tipo</label>
-            <br>
-            <input class="form-control text-center" type="text" name="tipo" value="<?= $result['tipo']; ?>">
-            <br>
-            <button type="submit" class="btn btn-primary"> Confirmar</button>
-    </form>
-    </div>
+        <div class="text-center p-3 flex-column d-flex justify-content-center border border-black">
+            <form method="POST" action="../controllers/edita_livro.php">
+                <input type="hidden" name="id" value="<?= $result['id']; ?>">
+                <label class="d-flex justify-content-center">Título</label>
+                <input class="form-control text-center" type="text" name="titulo" value="<?= $result['titulo']; ?>">
+                <label class="d-flex justify-content-center">Categoria</label>
+                <input class="form-control text-center" type="text" name="categoria" value="<?= $result['categoria']; ?>">
+                <label class="d-flex justify-content-center">Autor</label>
+                <input class="form-control text-center" type="text" name="autor" value="<?= $result['autor']; ?>">
+                <label class="d-flex justify-content-center">Editora</label>
+                <input class="form-control text-center" type="text" name="editora" value="<?= $result['editora']; ?>">
+                <label class="d-flex justify-content-center">Tipo</label>
+                <input class="form-control text-center" type="text" name="tipo" value="<?= $result['tipo']; ?>">
+                <button type="submit" class="btn btn-primary"> Confirmar</button>
+            </form>
+        </div>
     </div>
     <?php include '../components/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

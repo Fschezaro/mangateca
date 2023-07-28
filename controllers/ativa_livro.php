@@ -9,4 +9,4 @@ if ($query->execute(array($id))) {
     $_SESSION['mensagem'] = "Registro ativado com sucesso";
 }
 
-header("location: ../views/desativados.php");
+header("location: ../views/inativos.php");
