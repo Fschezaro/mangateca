@@ -1,7 +1,7 @@
 <?php require '../controllers/mostra_livro.php'; ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -13,21 +13,37 @@
 
 <body>
     <?php include '../components/header.php'; ?>
-    <div class="d-flex justify-content-center my-3">
-        <div class="text-center p-3 flex-column d-flex justify-content-center border border-black">
+    <div class="container my-3">
+        <div class="p-3">
             <form method="POST" action="../controllers/edita_livro.php">
                 <input type="hidden" name="id" value="<?= $result['id']; ?>">
-                <label class="d-flex justify-content-center">Título</label>
-                <input class="form-control text-center" type="text" name="titulo" value="<?= $result['titulo']; ?>">
-                <label class="d-flex justify-content-center">Categoria</label>
-                <input class="form-control text-center" type="text" name="categoria" value="<?= $result['categoria']; ?>">
-                <label class="d-flex justify-content-center">Autor</label>
-                <input class="form-control text-center" type="text" name="autor" value="<?= $result['autor']; ?>">
-                <label class="d-flex justify-content-center">Editora</label>
-                <input class="form-control text-center" type="text" name="editora" value="<?= $result['editora']; ?>">
-                <label class="d-flex justify-content-center">Tipo</label>
-                <input class="form-control text-center" type="text" name="tipo" value="<?= $result['tipo']; ?>">
-                <button type="submit" class="btn btn-primary"> Confirmar</button>
+                <div class="row">
+                    <div class="col">
+                        <label>Título</label>
+                        <input class="form-control" type="text" name="titulo" value="<?= $result['titulo']; ?>">
+                    </div>
+                    <div class="col">
+                        <label>Categoria</label>
+                        <input class="form-control" type="text" name="categoria" value="<?= $result['categoria']; ?>">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Autor</label>
+                        <input class="form-control" type="text" name="autor" value="<?= $result['autor']; ?>">
+                    </div>
+                    <div class="col">
+                        <label>Editora</label>
+                        <input class="form-control" type="text" name="editora" value="<?= $result['editora']; ?>">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-6">
+                        <label>Tipo</label>
+                        <input class="form-control" type="text" name="tipo" value="<?= $result['tipo']; ?>">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success mt-3 col-12 col-md-12">Salvar</button>
             </form>
         </div>
     </div>

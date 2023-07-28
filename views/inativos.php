@@ -24,9 +24,9 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <?php include '../components/header.php'; ?>
-    <div class="container d-flex justify-content-between mt-3 mb-4">
-        <div class="col-12 col-md-8">
-            <form class="row " action="inativos.php" method="post">
+    <div class="row m-auto">
+        <div class="col-10 col-md-8 mt-3 mb-4">
+            <form class="row" action="inativos.php" method="post">
                 <div class="col-8 col-md-8">
                     <input class="form-control form-control-sm" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
                 </div>
@@ -35,7 +35,10 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </form>
         </div>
-        <div class="align-self-center">
+        <div class="col align-self-center mt-3 mb-4">
+            <a class="btn btn-outline-primary btn-sm rounded-5 " href="inserir_livro.php">Adicionar</a>
+        </div>
+        <div class="col align-self-center mt-3 mb-4">
             <div class="btn-group justify-content-center align-itens" role="group" aria-label="Basic mixed styles example">
                 <a href="ativos.php" type="button" class="btn btn-success btn-sm ">Ativos</a>
                 <a href="pendentes.php" type="button" class="btn btn-warning btn-sm ">Pendentes</a>
@@ -43,33 +46,35 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
-    <div class="container ">
-        <table class="table table-sm table-striped table-hover table-bordered table-responsive">
-            <thead>
-                <tr>
-                    <th class="text-center">Titulo</th>
-                    <th class="text-center">Categoria</th>
-                    <th class="text-center">Autor</th>
-                    <th class="text-center">Editora</th>
-                    <th class="text-center">Tipo</th>
-                    <th colspan="2" class="text-center">Edição</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($resultado as $key => $livro) : ?>
-
+    <div class="row mx-5 ">
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover table-bordered table-responsive">
+                <thead>
                     <tr>
-                        <td class="text-center"> <?= $livro["titulo"]; ?></td>
-                        <td class="text-center"> <?= $livro["categoria"]; ?></td>
-                        <td class="text-center"> <?= $livro["autor"]; ?></td>
-                        <td class="text-center"> <?= $livro["editora"]; ?></td>
-                        <td class="text-center"> <?= $livro["tipo"]; ?></td>
-                        <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="edita_livro.php?id=<?= $livro['id']; ?>">Editar</a></td>
-                        <td class="text-center"><a class="btn btn-outline-success btn-sm col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>">Ativar</a></td>
+                        <th class="text-center">Titulo</th>
+                        <th class="text-center">Categoria</th>
+                        <th class="text-center">Autor</th>
+                        <th class="text-center">Editora</th>
+                        <th class="text-center">Tipo</th>
+                        <th colspan="2" class="text-center">Edição</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($resultado as $key => $livro) : ?>
+
+                        <tr>
+                            <td class="text-center"> <?= $livro["titulo"]; ?></td>
+                            <td class="text-center"> <?= $livro["categoria"]; ?></td>
+                            <td class="text-center"> <?= $livro["autor"]; ?></td>
+                            <td class="text-center"> <?= $livro["editora"]; ?></td>
+                            <td class="text-center"> <?= $livro["tipo"]; ?></td>
+                            <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="edita_livro.php?id=<?= $livro['id']; ?>">Editar</a></td>
+                            <td class="text-center"><a class="btn btn-outline-success btn-sm col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>">Ativar</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
     <?php include '../components/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

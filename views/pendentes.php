@@ -76,7 +76,7 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                         <td class="text-center"> <?= $livro["tipo"]; ?></td>
                         <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="edita_livro.php?id=<?= $livro['id']; ?>">Editar</a></td>
                         <?php if ($livro['estado']) : ?>
-                            <td class="text-center"><a class="btn btn-outline-danger btn-sm col-12" href="../controllers/exclui_livro.php?id=<?= $livro['id']; ?>">Desativar</a></td>
+                            <td class="text-center"><a class="btn btn-outline-danger btn-sm col-12" href="../controllers/inativa_livro.php?id=<?= $livro['id']; ?>">Desativar</a></td>
                         <?php else : ?>
                             <td class="text-center"><a class="btn btn-outline-success btn-sm col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>">Ativar</a></td>
                         <?php endif; ?>
