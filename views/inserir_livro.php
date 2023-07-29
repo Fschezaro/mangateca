@@ -36,11 +36,7 @@
             <div class="row align-items-center">
                 <div class="col-6 col-md-6">
                     <label>Tipo</label>
-                    <select class="form-select" name="tipo">
-                        <option value="Manga">Manga</option>
-                        <option value="Revista">Revista</option>
-                        <option value="Objeto">Objeto</option>
-                    </select>
+                    <input class="form-control" type="text" name="tipo" placeholder="Insira o tipo">
                 </div>
                 <div class="row">
                     <div class="col">
