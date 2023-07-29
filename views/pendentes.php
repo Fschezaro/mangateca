@@ -17,73 +17,82 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mangateca ativos</title>
+    <title>Mangateca</title>
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
 <body>
     <?php include '../components/header.php'; ?>
-    <div class="container d-flex justify-content-center">
-        <?php
-        session_start();
-        if (isset($_SESSION['mensagem'])) {
-            echo "<div class='mt-2 alert alert-danger' role='alert'>" . $_SESSION['mensagem'] . "</div>";
-            unset($_SESSION['mensagem']);
-        } ?>
-    </div>
+    <?php
+    session_start();
+    if (isset($_SESSION['desativado'])) {
+        echo "<div class='justify-content-center text-center container mt-2 alert alert-danger col-4' role='alert'>" . $_SESSION['desativado'] . "</div>";
+        unset($_SESSION['desativado']);
+    } ?>
+    <?php
+    if (isset($_SESSION['ativado'])) {
+        echo "<div class='justify-content-center text-center container mt-2 col-4 alert alert-success' role='alert'>" . $_SESSION['ativado'] . "</div>";
+        unset($_SESSION['ativado']);
+    } ?>
 
-    <div class="container d-flex justify-content-between mt-3 mb-4">
-        <div class="col-12 col-md-8">
-            <form class="row " action="pendentes.php" method="post">
-                <div class="col-8 col-md-8">
-                    <input class="form-control form-control-sm" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
+    <div class="mx-4">
+        <div class="row m-auto">
+            <div class="col-10 col-md-8 mt-3 mb-4">
+                <form class="row" action="pendentes.php" method="post">
+                    <div class="col-10 col-md-8">
+                        <input class="form-control form-control-sm" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-outline-primary btn-sm rounded-5">Pesquisa</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col align-self-center mt-3 mb-4">
+                <a class="btn btn-outline-primary btn-sm rounded-5 " href="inserir_livro.php">Adicionar</a>
+            </div>
+            <div class="col align-self-center mt-3 mb-4">
+                <div class="btn-group justify-content-center align-itens" role="group" aria-label="Basic mixed styles example">
+                    <a href="ativos.php" type="button" class="btn btn-success btn-sm ">Ativos</a>
+                    <a href="pendentes.php" type="button" class="btn btn-warning btn-sm ">Pendentes</a>
+                    <a href="inativos.php" type="button" class="btn btn-danger btn-sm ">Inativos</a>
                 </div>
-                <div class="col">
-                    <button type="submit" class="btn btn-outline-primary btn-sm rounded-5">Pesquisa</button>
-                </div>
-            </form>
-        </div>
-        <div class="align-self-center">
-            <div class="btn-group justify-content-center align-itens" role="group" aria-label="Basic mixed styles example">
-                <a href="ativos.php" type="button" class="btn btn-success btn-sm ">Ativos</a>
-                <a href="pendentes.php" type="button" class="btn btn-warning btn-sm ">Pendentes</a>
-                <a href="inativos.php" type="button" class="btn btn-danger btn-sm ">Inativos</a>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <table class="table table-sm table-striped table-hover table-bordered table-responsive">
-            <thead>
-                <tr>
-                    <th class="text-center">Titulo</th>
-                    <th class="text-center">Categoria</th>
-                    <th class="text-center">Autor</th>
-                    <th class="text-center">Editora</th>
-                    <th class="text-center">Tipo</th>
-                    <th class="text-center" class="text-center" colspan="2"> Edição</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($resultado as $key => $livro) : ?>
-
+    <div class="row mx-4">
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover table-bordered">
+                <thead>
                     <tr>
-                        <td class="text-center"> <?= $livro["titulo"] ?? "Não informado"; ?></td>
-                        <td class="text-center"> <?= $livro["categoria"] ?? "Não informado"; ?></td>
-                        <td class="text-center "> <?= $livro["autor"] ?? "Não informado"; ?></td>
-                        <td class="text-center"> <?= $livro["editora"] ?? "Não informado"; ?></td>
-                        <td class="text-center"> <?= $livro["tipo"]; ?></td>
-                        <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="edita_livro.php?id=<?= $livro['id']; ?>">Editar</a></td>
-                        <?php if ($livro['estado']) : ?>
-                            <td class="text-center"><a class="btn btn-outline-danger btn-sm col-12" href="../controllers/inativa_livro.php?id=<?= $livro['id']; ?>">Desativar</a></td>
-                        <?php else : ?>
-                            <td class="text-center"><a class="btn btn-outline-success btn-sm col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>">Ativar</a></td>
-                        <?php endif; ?>
+                        <th class="text-center">Titulo</th>
+                        <th class="text-center">Categoria</th>
+                        <th class="text-center">Autor</th>
+                        <th class="text-center">Editora</th>
+                        <th class="text-center">Tipo</th>
+                        <th class="text-center" class="text-center" colspan="2"> Edição</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($resultado as $key => $livro) : ?>
+                        <tr>
+                            <td class="text-center"> <?= $livro["titulo"] ?? "Não informado"; ?></td>
+                            <td class="text-center"> <?= $livro["categoria"] ?? "Não informado"; ?></td>
+                            <td class="text-center "> <?= $livro["autor"] ?? "Não informado"; ?></td>
+                            <td class="text-center"> <?= $livro["editora"] ?? "Não informado"; ?></td>
+                            <td class="text-center"> <?= $livro["tipo"]; ?></td>
+                            <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="edita_livro.php?id=<?= $livro['id']; ?>">Editar</a></td>
+                            <?php if ($livro['estado']) : ?>
+                                <td class="text-center"><a class="btn btn-outline-danger btn-sm col-12" href="../controllers/inativa_livro.php?id=<?= $livro['id']; ?>">Desativar</a></td>
+                            <?php else : ?>
+                                <td class="text-center"><a class="btn btn-outline-success btn-sm col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>">Ativar</a></td>
+                            <?php endif; ?>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <?php include '../components/footer.php'; ?>

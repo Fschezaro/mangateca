@@ -37,7 +37,7 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
     } ?>
     <div class="mx-4">
         <div class="row m-auto">
-            <div class="col-10 col-md-8 mt-3 mb-4 ">
+            <div class="col-10 col-md-8 mt-3 mb-4">
                 <form class="row" action="../views/ativos.php" method="post">
                     <div class="col-10 col-md-8">
                         <input class="form-control form-control-sm" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
@@ -88,8 +88,6 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
             </table>
         </div>
     </div>
-
-
     <?php include '../components/footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
