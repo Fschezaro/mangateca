@@ -3,23 +3,13 @@
    <?php else : ?>
        <td class="text-center"><a class="btn btn-outline-success btn-sm col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>">Ativar</a></td>
    <?php endif; ?>
-
+   $_SESSION['ativos'] = "ativos";
+   if (isset($_SESSION['desativado'])) {
+   echo "<div class='justify-content-center text-center container mt-2 alert alert-danger col-4' role='alert'>" . $_SESSION['desativado'] . "</div>";
+   unset($_SESSION['desativado']);
+   } ?>
    <?php
-    session_start();
-    if (isset($_SESSION['mensagem'])) {
-        echo "<div class='mt-2 alert alert-danger' role='alert'>" . $_SESSION['mensagem'] . "</div>";
-        unset($_SESSION['mensagem']);
-    } ?>
-
-   <?php
-    session_start();
-    if (isset($_SESSION['desativado'])) {
-        echo "<div class='mt-2 alert alert-danger' role='alert'>" . $_SESSION['desativado'] . "</div>";
-        unset($_SESSION['desativado']);
-    } ?>
-   <?php
-    session_start();
     if (isset($_SESSION['ativado'])) {
-        echo "<div class='mt-2 alert alert-success' role='alert'>" . $_SESSION['ativado'] . "</div>";
+        echo "<div class='justify-content-center text-center container mt-2 col-4 alert alert-success' role='alert'>" . $_SESSION['ativado'] . "</div>";
         unset($_SESSION['ativado']);
     } ?>

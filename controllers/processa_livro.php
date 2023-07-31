@@ -9,12 +9,15 @@ $editora = $_POST['editora'] == "" ? null : $_POST['editora'];
 $tipo = $_POST['tipo'] == "" ? null : $_POST['tipo'];
 $estado = "1";
 
-try {
+$query = $conexao->prepare("INSERT INTO livros (titulo,categoria,autor,editora,tipo,estado) VALUES (?,?,?,?,?,?)");
 
-    $query = $conexao->prepare("INSERT INTO livros (titulo,categoria,autor,editora,tipo,estado) VALUES (?,?,?,?,?,?)");
+$query->execute(array($titulo, $categoria, $autor, $editora, $tipo, $estado));
 
-    $query->execute(array($titulo, $categoria, $autor, $editora, $tipo, $estado));
-    header('Location:../views/ativos.php');
-} catch (PDOException $e) {
-    echo "Erro:" . $e->getMessage();
+session_start();
+if ($_SESSION['local'] == 1) {
+    header("location: ../views/ativos.php");
+} else if ($_SESSION['local'] == 2) {
+    header("location: ../views/pendentes.php");
+} else {
+    header("location: ../views/inativos.php");
 }

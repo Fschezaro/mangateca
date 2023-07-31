@@ -3,7 +3,7 @@ require '../controllers/db.php';
 
 if (isset($_POST['pesquisa'])) {
     $pesquisa = $_POST['pesquisa'];
-    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE estado = '1' AND (titulo IS NOT NULL AND categoria IS NOT NULL AND autor IS NOT NULL AND editora IS NOT NULL) AND (titulo LIKE '%$pesquisa%' OR categoria LIKE '%$pesquisa%' OR autor LIKE '%$pesquisa%' OR editora LIKE '%$pesquisa%')");
+    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE estado = '1' AND (titulo IS NOT NULL AND categoria IS NOT NULL AND autor IS NOT NULL AND editora IS NOT NULL) AND (titulo LIKE '%$pesquisa%' OR categoria LIKE '%$pesquisa%' OR autor LIKE '%$pesquisa%' OR editora LIKE '%$pesquisa%' OR tipo LIKE '%$pesquisa%')");
 } else {
     $query = $conexao->prepare("SELECT * FROM LIVROS WHERE estado = '1' AND (titulo IS NOT NULL AND categoria IS NOT NULL AND autor IS NOT NULL AND editora IS NOT NULL)");
 }
@@ -26,20 +26,13 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
     <?php include '../components/header.php'; ?>
     <?php
     session_start();
-    if (isset($_SESSION['desativado'])) {
-        echo "<div class='justify-content-center text-center container mt-2 alert alert-danger col-4' role='alert'>" . $_SESSION['desativado'] . "</div>";
-        unset($_SESSION['desativado']);
-    } ?>
-    <?php
-    if (isset($_SESSION['ativado'])) {
-        echo "<div class='justify-content-center text-center container mt-2 col-4 alert alert-success' role='alert'>" . $_SESSION['ativado'] . "</div>";
-        unset($_SESSION['ativado']);
-    } ?>
+    $_SESSION['local'] = "1";
+    ?>
     <div class="mx-4">
         <div class="row m-auto">
             <div class="col-10 col-md-8 mt-3 mb-4">
                 <form class="row" action="../views/ativos.php" method="post">
-                    <div class="col-10 col-md-8">
+                    <div class="col-8 col-md-8">
                         <input class="form-control form-control-sm" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
                     </div>
                     <div class="col">

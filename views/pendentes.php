@@ -3,7 +3,7 @@ require '../controllers/db.php';
 
 if (isset($_POST['pesquisa'])) {
     $pesquisa = $_POST['pesquisa'];
-    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE (titulo IS NULL OR categoria IS NULL OR autor IS NULL OR editora IS NULL) AND (titulo LIKE '%$pesquisa%' OR categoria LIKE '%$pesquisa%' OR autor LIKE '%$pesquisa%' OR editora LIKE '%$pesquisa%')");
+    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE (titulo IS NULL OR categoria IS NULL OR autor IS NULL OR editora IS NULL) AND (titulo LIKE '%$pesquisa%' OR categoria LIKE '%$pesquisa%' OR autor LIKE '%$pesquisa%' OR editora LIKE '%$pesquisa%' OR tipo LIKE '%$pesquisa%')");
 } else {
     $query = $conexao->prepare("SELECT * FROM LIVROS WHERE (titulo IS NULL OR categoria IS NULL OR autor IS NULL OR editora IS NULL)");
 }
@@ -26,21 +26,13 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
     <?php include '../components/header.php'; ?>
     <?php
     session_start();
-    if (isset($_SESSION['desativado'])) {
-        echo "<div class='justify-content-center text-center container mt-2 alert alert-danger col-4' role='alert'>" . $_SESSION['desativado'] . "</div>";
-        unset($_SESSION['desativado']);
-    } ?>
-    <?php
-    if (isset($_SESSION['ativado'])) {
-        echo "<div class='justify-content-center text-center container mt-2 col-4 alert alert-success' role='alert'>" . $_SESSION['ativado'] . "</div>";
-        unset($_SESSION['ativado']);
-    } ?>
-
+    $_SESSION['local'] = "2";
+    ?>
     <div class="mx-4">
         <div class="row m-auto">
             <div class="col-10 col-md-8 mt-3 mb-4">
                 <form class="row" action="pendentes.php" method="post">
-                    <div class="col-10 col-md-8">
+                    <div class="col-8 col-md-8">
                         <input class="form-control form-control-sm" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
                     </div>
                     <div class="col">
@@ -71,7 +63,7 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                         <th class="text-center">Autor</th>
                         <th class="text-center">Editora</th>
                         <th class="text-center">Tipo</th>
-                        <th class="text-center" class="text-center" colspan="2"> Edição</th>
+                        <th class="text-center" class="text-center"> Edição</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,13 +73,8 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                             <td class="text-center"> <?= $livro["categoria"] ?? "Não informado"; ?></td>
                             <td class="text-center "> <?= $livro["autor"] ?? "Não informado"; ?></td>
                             <td class="text-center"> <?= $livro["editora"] ?? "Não informado"; ?></td>
-                            <td class="text-center"> <?= $livro["tipo"]; ?></td>
+                            <td class="text-center"> <?= $livro["tipo"] ?? "Não informado"; ?></td>
                             <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="edita_livro.php?id=<?= $livro['id']; ?>">Editar</a></td>
-                            <?php if ($livro['estado']) : ?>
-                                <td class="text-center"><a class="btn btn-outline-danger btn-sm col-12" href="../controllers/inativa_livro.php?id=<?= $livro['id']; ?>">Desativar</a></td>
-                            <?php else : ?>
-                                <td class="text-center"><a class="btn btn-outline-success btn-sm col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>">Ativar</a></td>
-                            <?php endif; ?>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
