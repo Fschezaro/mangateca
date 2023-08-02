@@ -3,9 +3,9 @@ require '../controllers/db.php';
 
 if (isset($_POST['pesquisa'])) {
     $pesquisa = $_POST['pesquisa'];
-    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE estado = '1' AND (titulo IS NOT NULL AND categoria IS NOT NULL AND autor IS NOT NULL AND editora IS NOT NULL) AND (titulo LIKE '%$pesquisa%' OR categoria LIKE '%$pesquisa%' OR autor LIKE '%$pesquisa%' OR editora LIKE '%$pesquisa%' OR tipo LIKE '%$pesquisa%')");
+    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE estado = '1' AND (titulo IS NOT NULL AND categoria IS NOT NULL AND autor IS NOT NULL AND editora IS NOT NULL AND tipo IS NOT NULL) AND (titulo LIKE '%$pesquisa%' OR categoria LIKE '%$pesquisa%' OR autor LIKE '%$pesquisa%' OR editora LIKE '%$pesquisa%' OR tipo LIKE '%$pesquisa%')");
 } else {
-    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE estado = '1' AND (titulo IS NOT NULL AND categoria IS NOT NULL AND autor IS NOT NULL AND editora IS NOT NULL)");
+    $query = $conexao->prepare("SELECT * FROM LIVROS WHERE estado = '1' AND (titulo IS NOT NULL AND categoria IS NOT NULL AND autor IS NOT NULL AND editora IS NOT NULL AND tipo IS NOT NULL)");
 }
 $query->execute();
 $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
