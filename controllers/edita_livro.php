@@ -12,9 +12,9 @@ $query = $conexao->prepare("UPDATE livros SET titulo = ?, categoria = ?, autor =
 $query->execute(array($titulo, $categoria, $autor, $editora, $tipo, $id));
 
 session_start();
-if ($_SESSION['local'] == 1) {
+if ($_SESSION['local'] == "ativos") {
     header("location: ../views/ativos.php");
-} else if ($_SESSION['local'] == 2) {
+} else if ($_SESSION['local'] == "pendentes") {
     header("location: ../views/pendentes.php");
 } else {
     header("location: ../views/inativos.php");
