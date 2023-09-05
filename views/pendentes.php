@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 require '../controllers/db.php';
 
 if (isset($_POST['pesquisa'])) {
@@ -23,10 +26,8 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <?php include '../components/header.php'; ?>
-    <?php
-    session_start();
-    $_SESSION['local'] = "pendentes";
+    <?php include '../components/header.php';
+    $_SESSION['redirecionamento'] = 'pendentes';
     ?>
     <div class="mx-4">
         <div class="row m-auto">
@@ -74,7 +75,7 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                             <td class="text-center "> <?= $livro["autor"] ?? "Não informado"; ?></td>
                             <td class="text-center"> <?= $livro["editora"] ?? "Não informado"; ?></td>
                             <td class="text-center"> <?= $livro["tipo"] ?? "Não informado"; ?></td>
-                            <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="edita_livro.php?id=<?= $livro['id']; ?>">Editar</a></td>
+                            <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="edita_livro.php?redirect=ativos&id=<?= $livro['id']; ?>">Editar</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

@@ -11,10 +11,9 @@ $tipo = $_POST['tipo'] == "" ? null : $_POST['tipo'];
 $query = $conexao->prepare("UPDATE livros SET titulo = ?, categoria = ?, autor = ?, editora = ?, tipo = ? WHERE id = ?");
 $query->execute(array($titulo, $categoria, $autor, $editora, $tipo, $id));
 
-session_start();
-if ($_SESSION['local'] == "ativos") {
+if ($_SESSION['redirecionamento'] == 'ativos') {
     header("location: ../views/ativos.php");
-} else if ($_SESSION['local'] == "pendentes") {
+} else if ($_SESSION['redirecionamento'] == 'pendentes') {
     header("location: ../views/pendentes.php");
 } else {
     header("location: ../views/inativos.php");

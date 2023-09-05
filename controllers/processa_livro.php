@@ -1,6 +1,7 @@
 <?php
-
+session_start();
 require 'db.php';
+
 
 $titulo = $_POST['titulo'] == "" ? null : $_POST['titulo'];
 $categoria = $_POST['categoria'] == "" ? null : $_POST['categoria'];
@@ -13,10 +14,9 @@ $query = $conexao->prepare("INSERT INTO livros (titulo,categoria,autor,editora,t
 
 $query->execute(array($titulo, $categoria, $autor, $editora, $tipo, $estado));
 
-session_start();
-if ($_SESSION['local'] == 'ativos') {
+if ($_SESSION['redirecionamento'] == 'ativos') {
     header("location: ../views/ativos.php");
-} else if ($_SESSION['local'] == 'pendentes') {
+} else if ($_SESSION['redirecionamento'] == 'pendentes') {
     header("location: ../views/pendentes.php");
 } else {
     header("location: ../views/inativos.php");

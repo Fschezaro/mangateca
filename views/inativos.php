@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 require '../controllers/db.php';
 
 if (isset($_POST['pesquisa'])) {
@@ -23,10 +26,9 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <?php include '../components/header.php'; ?>
-    <?php
-    session_start();
-    $_SESSION['local'] = "inativos";
+    <?php include '../components/header.php';
+    unset($_SESSION['redirecionamento']);
+    $_SESSION['redirecionamento'] = 'inativos';
     ?>
     <div class="mx-4">
         <div class="row m-auto">
@@ -74,7 +76,7 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                             <td class="text-center"> <?= $livro["autor"]; ?></td>
                             <td class="text-center"> <?= $livro["editora"]; ?></td>
                             <td class="text-center"> <?= $livro["tipo"]; ?></td>
-                            <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="edita_livro.php?id=<?= $livro['id']; ?>">Editar</a></td>
+                            <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="edita_livro.php?redirect=inativos&id=<?= $livro['id']; ?>">Editar</a></td>
                             <td class="text-center"><a class="btn btn-outline-success btn-sm col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>">Ativar</a></td>
                         </tr>
                     <?php endforeach; ?>
