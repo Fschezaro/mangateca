@@ -1,2 +1,2 @@
 <?php
-header("Location:views/ativos.php");
+header("Location:views/login.php");

@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (isset($_SESSION['logged'])) {
+    header('Location: ativos.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -14,13 +22,13 @@
     <div class="container">
         <div class="bg-dark text-white position-absolute top-50 start-50 translate-middle p-4 rounded">
             <h1>Login</h1>
-            <form action="form-control">
+            <form method="post" action="../controllers/session.php" class="">
                 <div class="d-flex flex-column">
                     <label for="">Usuário</label>
-                    <input type="text">
+                    <input name="nickname" class="form-control" type="text" required>
                     <label for="">Senha</label>
-                    <input type="text">
-                    <button class="btn btn-primary mt-3">Acessar</button>
+                    <input name="passwordi" class="form-control" type="password" required>
+                    <button type="submit" class="btn btn-primary mt-3">Entrar</button>
                 </div>
             </form>
         </div>
