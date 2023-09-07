@@ -23,37 +23,26 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
     <title>Mangateca</title>
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
+<script>
+    $(document).ready(function() {
+        $("#pesquisa").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#tabela tr").filter(function() {
+                $(this).toggle($(this).text()
+                    .toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 
 <body>
     <?php include '../components/header.php';
     unset($_SESSION['redirecionamento']);
     $_SESSION['redirecionamento'] = 'inativos';
+    include '../components/menu.php';
     ?>
-    <div class="mx-4">
-        <div class="row m-auto">
-            <div class="col-10 col-md-8 mt-3 mb-4">
-                <form class="row" action="inativos.php" method="post">
-                    <div class="col-8 col-md-8">
-                        <input class="form-control form-control-sm" type="search" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-outline-primary btn-sm rounded-5">Pesquisa</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col align-self-center mt-3 mb-4">
-                <a class="btn btn-outline-primary btn-sm rounded-5 " href="inserir_livro.php">Adicionar</a>
-            </div>
-            <div class="col align-self-center mt-3 mb-4">
-                <div class="btn-group justify-content-center align-itens" role="group" aria-label="Basic mixed styles example">
-                    <a href="ativos.php" type="button" class="btn btn-success btn-sm ">Ativos</a>
-                    <a href="pendentes.php" type="button" class="btn btn-warning btn-sm ">Pendentes</a>
-                    <a href="inativos.php" type="button" class="btn btn-danger btn-sm ">Inativos</a>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="row mx-4 m-auto">
         <div class="table-responsive">
             <table class="table table-sm table-striped table-hover table-bordered">
@@ -67,7 +56,7 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                         <th colspan="2" class="text-center">Edição</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tabela">
                     <?php foreach ($resultado as $key => $livro) : ?>
 
                         <tr>

@@ -16,9 +16,38 @@ if (isset($_SESSION['logged'])) {
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/iziToast.min.css">
+
 </head>
+<script src="../js/iziToast.min.js" type="text/javascript">
+    iziToast.settings({
+        timeout: 10000,
+        resetOnHover: true,
+        icon: 'material-icons',
+        transitionIn: 'flipInX',
+        transitionOut: 'flipOutX',
+        onOpening: function() {
+            console.log('callback abriu!');
+        },
+        onClosing: function() {
+            console.log("callback fechou!");
+        }
+    });
+</script>
 
 <body class="bg-primary">
+    <?php
+    if (isset($_SESSION['try'])) {
+        unset($_SESSION['try']);
+        echo "<script>
+        iziToast.error({
+        title: 'Error',
+        message: 'Login ou senha incorretos',
+        });
+        </script>";
+    }
+    ?>
+
     <div class="container">
         <div class="bg-dark text-white position-absolute top-50 start-50 translate-middle p-4 rounded">
             <h1>Login</h1>

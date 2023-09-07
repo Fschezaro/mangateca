@@ -48,7 +48,7 @@
     </div>
     <div class="col-12 position-absolute bottom-0">
         <footer>
-            <div class="p-4 bg-dark text-white d-flex justify-content-center">
+            <div class="p-1 bg-dark text-white d-flex justify-content-center">
                 Mangateca by Fer - 2023 ©
             </div>
         </footer>

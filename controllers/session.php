@@ -12,11 +12,12 @@ $query->execute(array($nickname));
 
 $resultado =  $query->fetch(PDO::FETCH_ASSOC);
 
-if ($resultado) {
+if ($resultado['passwordi'] == $passwordi && $resultado['nickname'] == $nickname) {
     $_SESSION['logged'] = true;
     $_SESSION['username'] = $nickname;
     $_SESSION['iduser'] = $resultado['iduser'];
     header('Location: ../views/ativos.php');
 } else {
+    $_SESSION['try'] = true;
     header('Location: ../views/login.php');
 }

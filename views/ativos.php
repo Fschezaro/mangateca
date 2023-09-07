@@ -8,9 +8,9 @@ require '../controllers/db.php';
 
 if (isset($_POST['pesquisa'])) {
     $pesquisa = $_POST['pesquisa'];
-    $query = $conexao->prepare("SELECT * FROM livros WHERE estado = '1' AND (titulo IS NOT NULL AND categoria IS NOT NULL AND autor IS NOT NULL AND editora IS NOT NULL AND tipo IS NOT NULL) AND (titulo LIKE '%$pesquisa%' OR categoria LIKE '%$pesquisa%' OR autor LIKE '%$pesquisa%' OR editora LIKE '%$pesquisa%' OR tipo LIKE '%$pesquisa%')");
+    $query = $conexao->prepare("SELECT * FROM livros WHERE estado = 1  AND (titulo LIKE '%$pesquisa%' OR categoria LIKE '%$pesquisa%' OR autor LIKE '%$pesquisa%' OR editora LIKE '%$pesquisa%' OR tipo LIKE '%$pesquisa%')");
 } else {
-    $query = $conexao->prepare("SELECT * FROM livros WHERE estado = '1' AND (titulo IS NOT NULL AND categoria IS NOT NULL AND autor IS NOT NULL AND editora IS NOT NULL AND tipo IS NOT NULL)");
+    $query = $conexao->prepare("SELECT * FROM livros WHERE estado = 1 AND recebido = 1");
 }
 $query->execute();
 $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -26,51 +26,45 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/iziToast.min.css">
 </head>
+<script src="../js/iziToast.min.js" type="text/javascript">
+    iziToast.settings({
+        timeout: 10000,
+        resetOnHover: true,
+        icon: 'material-icons',
+        transitionIn: 'flipInX',
+        transitionOut: 'flipOutX',
+        onOpening: function() {
+            console.log('callback abriu!');
+        },
+        onClosing: function() {
+            console.log("callback fechou!");
+        }
+    });
+</script>
+<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#pesquisa").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#tabela tr").filter(function() {
+                $(this).toggle($(this).text()
+                    .toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 
 <body>
     <?php include '../components/header.php';
     unset($_SESSION['redirecionamento']);
     $_SESSION['redirecionamento'] = 'ativos';
+    include '../components/menu.php';
     ?>
-    <div class="mx-4">
-        <div class="row m-auto">
-            <div class="col-10 col-md-8 mt-3 mb-4">
-                <form class="row" action="../views/ativos.php" method="post">
-                    <script>
-                        $(document).ready(function() {
-                            $("#pesquisa").on("keyup", function() {
-                                var value = $(this).val().toLowerCase();
-                                $("#tabela tr").filter(function() {
-                                    $(this).toggle($(this).text()
-                                        .toLowerCase().indexOf(value) > -1)
-                                });
-                            });
-                        });
-                    </script>
-                    <div class="col-8 col-md-8">
-                        <input id="pesquisa" class="form-control form-control-sm" type="text" placeholder="Pesquisar" aria-label="Pesquisar" name="pesquisa">
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-outline-primary btn-sm rounded-5">Pesquisa</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col align-self-center mt-3 mb-4">
-                <a class="btn btn-outline-primary btn-sm rounded-5 " href="inserir_livro.php">Adicionar</a>
-            </div>
-            <div class="col align-self-center mt-3 mb-4">
-                <div class="btn-group justify-content-center align-itens" role="group" aria-label="Basic mixed styles example">
-                    <a href="ativos.php" type="button" class="btn btn-success btn-sm ">Ativos</a>
-                    <a href="pendentes.php" type="button" class="btn btn-warning btn-sm ">Pendentes</a>
-                    <a href="inativos.php" type="button" class="btn btn-danger btn-sm ">Inativos</a>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="row mx-4">
         <div class="table-responsive">
-            <table class="table table-sm table-striped table-hover table-bordered">
+            <table class="table table-sm table-striped table-hover table-bordered sortable">
                 <thead>
                     <tr>
                         <th class="text-center">Titulo</th>
