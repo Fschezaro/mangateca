@@ -1,14 +1,17 @@
 <?php
 
 session_start();
+if (!$_SESSION['logged']) {
+    header('Location: login.php');
+}
 
 require '../controllers/db.php';
 
 if (isset($_POST['pesquisa'])) {
     $pesquisa = $_POST['pesquisa'];
-    $query = $conexao->prepare("SELECT * FROM livros WHERE estado = '0' AND (titulo IS NOT NULL AND categoria IS NOT NULL AND autor IS NOT NULL AND editora IS NOT NULL AND tipo IS NOT NULL) AND (titulo LIKE '%$pesquisa%' OR categoria LIKE '%$pesquisa%' OR autor LIKE '%$pesquisa%' OR editora LIKE '%$pesquisa%' OR tipo LIKE '%$pesquisa%' OR tipo LIKE '%$pesquisa%')");
+    $query = $conexao->prepare("SELECT * FROM livros WHERE estado = 0 AND recebido = 1 AND (titulo LIKE '%$pesquisa%' OR categoria LIKE '%$pesquisa%' OR autor LIKE '%$pesquisa%' OR editora LIKE '%$pesquisa%' OR tipo LIKE '%$pesquisa%' OR tipo LIKE '%$pesquisa%')");
 } else {
-    $query = $conexao->prepare("SELECT * FROM livros WHERE estado = '0' AND (titulo IS NOT NULL AND categoria IS NOT NULL AND autor IS NOT NULL AND editora IS NOT NULL AND tipo IS NOT NULL)");
+    $query = $conexao->prepare("SELECT * FROM livros WHERE estado = 0 AND recebido = 1");
 }
 $query->execute();
 $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -65,8 +68,8 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                             <td class="text-center"> <?= $livro["autor"]; ?></td>
                             <td class="text-center"> <?= $livro["editora"]; ?></td>
                             <td class="text-center"> <?= $livro["tipo"]; ?></td>
-                            <td class="text-center"><a class="btn btn-outline-secondary btn-sm" href="edita_livro.php?redirect=inativos&id=<?= $livro['id']; ?>">Editar</a></td>
-                            <td class="text-center"><a class="btn btn-outline-success btn-sm col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>">Ativar</a></td>
+                            <td class="text-center col-1"><a class="mx-2 col" href="edita_livro.php?id=<?= $livro['id']; ?>"><img src="../img/botao-editar.png" width="30px"></a></td>
+                            <td class="text-center col-1"><a class="col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>"><img src="../img/botao-de-energia.png" width="30px"></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

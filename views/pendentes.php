@@ -1,6 +1,9 @@
 <?php
 
 session_start();
+if (!$_SESSION['logged']) {
+    header('Location: login.php');
+}
 
 require '../controllers/db.php';
 
@@ -51,7 +54,7 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                         <th class="text-center">Autor</th>
                         <th class="text-center">Editora</th>
                         <th class="text-center">Tipo</th>
-                        <th class="text-center" class="text-center"> Edição</th>
+                        <th class="text-center" colspan="3"> Edição</th>
                     </tr>
                 </thead>
                 <tbody id="tabela">
@@ -62,11 +65,9 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                             <td class="text-center "> <?= $livro["autor"] ?? "Não informado"; ?></td>
                             <td class="text-center"> <?= $livro["editora"] ?? "Não informado"; ?></td>
                             <td class="text-center"> <?= $livro["tipo"] ?? "Não informado"; ?></td>
-                            <td class="text-center col-2">
-                                <a class="col" href="../controllers/recebelivro.php?id=<?= $livro['id']; ?>"><img src="../img/correto.png" width="30px"></a>
-                                <a class="mx-2 col" href="edita_livro.php?id=<?= $livro['id']; ?>"><img src="../img/botao-editar.png" width="30px"></a>
-                                <a class="col-3 col" href="../controllers/inativa_livro.php?id=<?= $livro['id']; ?>"><img src="../img/cancelar.png" width="30px"></a>
-                            </td>
+                            <td class="text-center"><a href="../controllers/recebelivro.php?id=<?= $livro['id']; ?>"><img src="../img/correto.png" width="30px"></a></td>
+                            <td class="text-center"><a href=" edita_livro.php?id=<?= $livro['id']; ?>"><img src="../img/botao-editar.png" width="30px"></a></td>
+                            <td class="text-center"><a href="../controllers/inativa_livro.php?id=<?= $livro['id']; ?>"><img src="../img/cancelar.png" width="30px"></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
