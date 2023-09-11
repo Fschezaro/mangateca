@@ -39,9 +39,10 @@ $autor = $_POST['autor'] == "" ? null : $_POST['autor'];
 $editora = $_POST['editora'] == "" ? null : $_POST['editora'];
 $tipo = $_POST['tipo'] == "" ? null : $_POST['tipo'];
 $recebido = $_POST['btnradio'];
+$valor = $_POST['valor'] == "" ? null : $_POST['valor'];
 
-$query = $conexao->prepare("UPDATE livros SET titulo = ?, categoria = ?, autor = ?, editora = ?, tipo = ?, recebido = ? WHERE id = ?");
-$query->execute(array($titulo, $categoria, $autor, $editora, $tipo, $recebido, $id));
+$query = $conexao->prepare("UPDATE livros SET titulo = ?, categoria = ?, autor = ?, editora = ?, tipo = ?, recebido = ?, valor = ? WHERE id = ?");
+$query->execute(array($titulo, $categoria, $autor, $editora, $tipo, $recebido, $valor, $id));
 
 if ($_SESSION['redirecionamento'] == 'ativos') {
     header("location: ../views/ativos.php");

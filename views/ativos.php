@@ -8,10 +8,15 @@ $iduser = $_SESSION['iduser'];
 
 require '../controllers/db.php';
 
-$query = $conexao->prepare("SELECT * FROM livros WHERE estado = 1 AND recebido = 1 AND relation = $iduser");
+$query = $conexao->prepare("SELECT * FROM livros WHERE estado = 1 AND recebido = 1 AND relation = $iduser ORDER BY titulo");
 
 $query->execute();
 $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
+
+$query = $conexao->prepare("SELECT SUM(valor) from livros WHERE estado = 1");
+
+$query->execute();
+$valor = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -66,10 +71,10 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                 <thead>
                     <tr>
                         <th class="text-center">Titulo</th>
-                        <th class="text-center">Categoria</th>
                         <th class="text-center">Autor</th>
                         <th class="text-center">Editora</th>
                         <th class="text-center">Tipo</th>
+                        <th class="text-center">Valor</th>
                         <th colspan="2" class="text-center">Edição</th>
                     </tr>
                 </thead>
@@ -77,10 +82,10 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                     <?php foreach ($resultado as $key => $livro) : ?>
                         <tr>
                             <td class="text-center"> <?= $livro["titulo"]; ?></td>
-                            <td class="text-center"> <?= $livro["categoria"]; ?></td>
                             <td class="text-center"> <?= $livro["autor"]; ?></td>
                             <td class="text-center"> <?= $livro["editora"]; ?></td>
                             <td class="text-center"> <?= $livro["tipo"]; ?></td>
+                            <td class="text-center"> <?= $livro["valor"]; ?></td>
                             <td class="text-center col-1"><a class="mx-2 col" href="edita_livro.php?id=<?= $livro['id']; ?>"><span class="material-symbols-outlined">edit</span></a></td>
                             <td class="text-center col-1"><a class="col-3 col" href="../controllers/inativa_livro.php?id=<?= $livro['id']; ?>"><img src="../img/cancelar.png" width="30px" alt="Desativar"></a></td>
                         </tr>

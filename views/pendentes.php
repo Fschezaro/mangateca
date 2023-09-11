@@ -13,6 +13,11 @@ $query = $conexao->prepare("SELECT * FROM livros WHERE recebido = 0 AND relation
 
 $query->execute();
 $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
+
+$query = $conexao->prepare("SELECT SUM(valor) from livros WHERE estado = 1");
+
+$query->execute();
+$valor = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -48,21 +53,21 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                 <thead>
                     <tr>
                         <th class="text-center">Titulo</th>
-                        <th class="text-center">Categoria</th>
                         <th class="text-center">Autor</th>
                         <th class="text-center">Editora</th>
                         <th class="text-center">Tipo</th>
+                        <th class="text-center">Valor</th>
                         <th class="text-center" colspan="3"> Edição</th>
                     </tr>
                 </thead>
                 <tbody id="tabela">
                     <?php foreach ($resultado as $key => $livro) : ?>
                         <tr>
-                            <td class="text-center"> <?= $livro["titulo"] ?? "Não informado"; ?></td>
-                            <td class="text-center"> <?= $livro["categoria"] ?? "Não informado"; ?></td>
-                            <td class="text-center "> <?= $livro["autor"] ?? "Não informado"; ?></td>
-                            <td class="text-center"> <?= $livro["editora"] ?? "Não informado"; ?></td>
-                            <td class="text-center"> <?= $livro["tipo"] ?? "Não informado"; ?></td>
+                            <td class="text-center"> <?= $livro["titulo"]; ?></td>
+                            <td class="text-center "> <?= $livro["autor"]; ?></td>
+                            <td class="text-center"> <?= $livro["editora"]; ?></td>
+                            <td class="text-center"> <?= $livro["tipo"]; ?></td>
+                            <td class="text-center"> <?= $livro["valor"]; ?></td>
                             <td class="text-center"><a href="../controllers/recebelivro.php?id=<?= $livro['id']; ?>"><img src="../img/correto.png" width="30px" alt="Confirmar recebimento"></a></td>
                             <td class="text-center"><a href=" edita_livro.php?id=<?= $livro['id']; ?>"><img src="../img/botao-editar.png" width="30px" alt="Editar"></a></td>
                             <td class="text-center"><a href="../controllers/inativa_livro.php?id=<?= $livro['id']; ?>"><img src="../img/cancelar.png" width="30px" alt="Desativar"></a></td>

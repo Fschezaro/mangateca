@@ -8,7 +8,8 @@ CREATE TABLE `livros` (
   estado tinyint(1),
   recebido boolean,
   pathi varchar(90),
-  relation int);
+  relation int,
+  valor int);
 
 insert into livros (id,titulo,categoria,autor,editora,tipo,estado,recebido,pathi,relation) values
 (default,'One piece n°1','ventura','Eiichiro Oda','Panini','Manga',1,1,null,2),
@@ -556,3 +557,14 @@ insert into livros (id,titulo,categoria,autor,editora,tipo,estado,recebido,pathi
 (default,'Os Cavaleiro do Zodíaco - Saintia Shô n°11','Aventura','Masami Kurumada','JBC','Manga',1,1,null,2),
 (default,'Os Cavaleiro do Zodíaco - Saintia Shô n°12','Aventura','Masami Kurumada','JBC','Manga',0,1,null,2),
 (default,'Os Cavaleiro do Zodíaco - Saintia Shô n°13','Aventura','Masami Kurumada','JBC','Manga',0,1,null,2);
+
+insert into livros (id,titulo,categoria,autor,editora,tipo,estado,recebido,pathi,relation) values
+(default,'Sword Art Online Aincrad n°1','Aventura','Reki Kawahara','Panini','Manga',1,1,null,2),
+(default,'Sword Art Online Aincrad n°2','Aventura','Reki Kawahara','Panini','Manga',1,1,null,2),
+(default,'Sword Art Online Phantom Bullet n°1','Aventura','Reki Kawahara','Panini','Manga',1,1,null,2),
+(default,'Sword Art Online Phantom Bullet n°2','Aventura','Reki Kawahara','Panini','Manga',1,1,null,2),
+(default,'Sword Art Online Phantom Bullet n°3','Aventura','Reki Kawahara','Panini','Manga',1,1,null,2),
+(default,'Sword Art Online Calibur','Aventura','Reki Kawahara','Panini','Manga',1,1,null,2),
+(default,'Sword Art Online Mothers Rosario n°1','Aventura','Reki Kawahara','Panini','Manga',1,1,null,2),
+(default,'Sword Art Online Mothers Rosario n°2','Aventura','Reki Kawahara','Panini','Manga',1,1,null,2),
+(default,'Sword Art Online Mothers Rosario n°3','Aventura','Reki Kawahara','Panini','Manga',1,1,null,2),

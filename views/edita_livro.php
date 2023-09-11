@@ -43,8 +43,12 @@ require '../controllers/mostra_livro.php';
                     <label>Tipo</label>
                     <input class="form-control" type="text" name="tipo" value="<?= $result['tipo']; ?>">
                 </div>
+                <div class="col">
+                    <label>Valor</label>
+                    <input class="form-control" type="text" name="valor" value="<?= $result['valor']; ?>">
+                </div>
                 <div class="col d-flex justify-content-center align-self-center mt-sm-4 mt-3">
-                    <div class="btn-group col-12 col-sm-4" role="group" aria-label="Basic radio toggle button group">
+                    <div class="btn-group col-12 col-sm-6" role="group" aria-label="Basic radio toggle button group">
                         <input type="radio" class="btn-check" value=1 name="btnradio" id="btnradio1" autocomplete="off" checked>
                         <label class="btn btn-outline-info" for="btnradio1">Em mãos</label>
 

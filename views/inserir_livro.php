@@ -39,23 +39,27 @@ if (!$_SESSION['logged']) {
                     <label>Tipo</label>
                     <input class="form-control mb-3" type="text" name="tipo" placeholder="Insira o tipo">
                 </div>
-                <div class="col-sm-6 col-12">
-                    <!-- <label>Foto</label>
+                <div class="col">
+                    <label>valor</label>
+                    <input class="form-control mb-3" type="number" name="valor" placeholder="Insira o valor" min=0>
+                </div>
+                <!-- <div class="col-sm-6 col-12">
+                     <label>Foto</label>
                     <input class="form form-control" type="file" name="arquivo" accept=".png,.jpg">
                 </div> -->
-                    <div class="col d-flex justify-content-center align-self-center mt-sm-4 mt-0">
-                        <div class="btn-group col-12 col-sm-4" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" value=1 name="btnradio" id="btnradio1" autocomplete="off" checked>
-                            <label class="btn btn-outline-info" for="btnradio1">Em mãos</label>
+                <div class="col d-flex justify-content-center mt-sm-4 mt-0">
+                    <div class="btn-group col-12 col-sm-6" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" value=1 name="btnradio" id="btnradio1" autocomplete="off" checked>
+                        <label class="btn btn-outline-info" for="btnradio1">Em mãos</label>
 
-                            <input type="radio" class="btn-check" value=0 name="btnradio" id="btnradio2" autocomplete="off">
-                            <label class="btn btn-outline-info" for="btnradio2">A receber</label>
-                        </div>
+                        <input type="radio" class="btn-check" value=0 name="btnradio" id="btnradio2" autocomplete="off">
+                        <label class="btn btn-outline-info" for="btnradio2">A receber</label>
                     </div>
                 </div>
-                <div class="col d-flex justify-content-center">
-                    <input class="btn btn-success col-sm-4 col-12 mt-3" type="submit" value="Adicionar">
-                </div>
+            </div>
+            <div class="col d-flex justify-content-center">
+                <input class="btn btn-success col-sm-4 col-12 mt-3" type="submit" value="Adicionar">
+            </div>
         </form>
     </div>
     <footer>

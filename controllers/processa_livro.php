@@ -11,11 +11,12 @@ $editora = $_POST['editora'] == "" ? null : $_POST['editora'];
 $tipo = $_POST['tipo'] == "" ? null : $_POST['tipo'];
 $estado = '1';
 $recebido = $_POST['btnradio'];
+$valor = $_POST['valor'] == "" ? null : $_POST['valor'];
 // $local = $pasta . $novoNomeDoArquivo . "." . $extensao;
 
-$query = $conexao->prepare("INSERT INTO livros (titulo,categoria,autor,editora,tipo,estado,recebido,relation) VALUES (?,?,?,?,?,?,?,?)");
+$query = $conexao->prepare("INSERT INTO livros (titulo,categoria,autor,editora,tipo,estado,recebido,relation,valor) VALUES (?,?,?,?,?,?,?,?,?)");
 
-$query->execute(array($titulo, $categoria, $autor, $editora, $tipo, $estado, $recebido, $iduser));
+$query->execute(array($titulo, $categoria, $autor, $editora, $tipo, $estado, $recebido, $iduser, $valor));
 
 if ($_SESSION['redirecionamento'] == 'ativos') {
     header("location: ../views/ativos.php");
