@@ -17,7 +17,7 @@ if (!$_SESSION['logged']) {
 <body>
     <?php include '../components/header.php'; ?>
     <div class="container my-3">
-        <form method="post" action="../controllers/processa_livro.php" enctype="multipart/form-data">
+        <form method="post" action="../controllers/processa_livro.php">
             <div class="row row-cols-1 row-cols-sm-2 ">
                 <div class="col">
                     <label>Título</label>
@@ -40,31 +40,29 @@ if (!$_SESSION['logged']) {
                     <input class="form-control mb-3" type="text" name="tipo" placeholder="Insira o tipo">
                 </div>
                 <div class="col-sm-6 col-12">
-                    <label>Foto</label>
-                    <input class="col-6 form-control" type="file" name="arquivo">
-                </div>
-                <div class="col d-flex justify-content-center align-self-center mt-sm-0 mt-3">
-                    <div class="btn-group col-12 col-sm-4" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" value=1 name="btnradio" id="btnradio1" autocomplete="off" checked>
-                        <label class="btn btn-outline-info" for="btnradio1">Em mãos</label>
+                    <!-- <label>Foto</label>
+                    <input class="form form-control" type="file" name="arquivo" accept=".png,.jpg">
+                </div> -->
+                    <div class="col d-flex justify-content-center align-self-center mt-sm-4 mt-0">
+                        <div class="btn-group col-12 col-sm-4" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" value=1 name="btnradio" id="btnradio1" autocomplete="off" checked>
+                            <label class="btn btn-outline-info" for="btnradio1">Em mãos</label>
 
-                        <input type="radio" class="btn-check" value=0 name="btnradio" id="btnradio2" autocomplete="off">
-                        <label class="btn btn-outline-info" for="btnradio2">A receber</label>
+                            <input type="radio" class="btn-check" value=0 name="btnradio" id="btnradio2" autocomplete="off">
+                            <label class="btn btn-outline-info" for="btnradio2">A receber</label>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col d-flex justify-content-center">
-                <input class="btn btn-success col-sm-4 col-12 mt-3" type="submit" value="Adicionar">
-            </div>
+                <div class="col d-flex justify-content-center">
+                    <input class="btn btn-success col-sm-4 col-12 mt-3" type="submit" value="Adicionar">
+                </div>
         </form>
     </div>
-
-
-
-
-
-
-    <?php include '../components/footer.php'; ?>
+    <footer>
+        <div class="fixed-bottom col-12 col-md-12 p-1 bg-dark text-white text-center ">
+            Mangateca by Fer - 2023 ©
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>

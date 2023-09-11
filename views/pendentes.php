@@ -5,14 +5,12 @@ if (!$_SESSION['logged']) {
     header('Location: login.php');
 }
 
+$iduser = $_SESSION['iduser'];
+
 require '../controllers/db.php';
 
-if (isset($_POST['pesquisa'])) {
-    $pesquisa = $_POST['pesquisa'];
-    $query = $conexao->prepare("SELECT * FROM livros WHERE recebido = 0 AND (titulo LIKE '%$pesquisa%' OR categoria LIKE '%$pesquisa%' OR autor LIKE '%$pesquisa%' OR editora LIKE '%$pesquisa%' OR tipo LIKE '%$pesquisa%')");
-} else {
-    $query = $conexao->prepare("SELECT * FROM livros WHERE recebido = 0");
-}
+$query = $conexao->prepare("SELECT * FROM livros WHERE recebido = 0 AND relation = $iduser");
+
 $query->execute();
 $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -65,9 +63,9 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                             <td class="text-center "> <?= $livro["autor"] ?? "Não informado"; ?></td>
                             <td class="text-center"> <?= $livro["editora"] ?? "Não informado"; ?></td>
                             <td class="text-center"> <?= $livro["tipo"] ?? "Não informado"; ?></td>
-                            <td class="text-center"><a href="../controllers/recebelivro.php?id=<?= $livro['id']; ?>"><img src="../img/correto.png" width="30px"></a></td>
-                            <td class="text-center"><a href=" edita_livro.php?id=<?= $livro['id']; ?>"><img src="../img/botao-editar.png" width="30px"></a></td>
-                            <td class="text-center"><a href="../controllers/inativa_livro.php?id=<?= $livro['id']; ?>"><img src="../img/cancelar.png" width="30px"></a></td>
+                            <td class="text-center"><a href="../controllers/recebelivro.php?id=<?= $livro['id']; ?>"><img src="../img/correto.png" width="30px" alt="Confirmar recebimento"></a></td>
+                            <td class="text-center"><a href=" edita_livro.php?id=<?= $livro['id']; ?>"><img src="../img/botao-editar.png" width="30px" alt="Editar"></a></td>
+                            <td class="text-center"><a href="../controllers/inativa_livro.php?id=<?= $livro['id']; ?>"><img src="../img/cancelar.png" width="30px" alt="Desativar"></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

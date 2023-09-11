@@ -16,6 +16,9 @@ require '../controllers/mostra_livro.php';
 
 <body>
     <?php include '../components/header.php'; ?>
+    <!-- <div class="d-flex justify-content-center mt-4">
+        <img src="<?php print_r($result['pathi']); ?>" alt="" width="150px">
+    </div> -->
     <div class="container my-3">
         <form method="POST" action="../controllers/edita_livro.php">
             <div class="row row-cols-sm-2 row-cols-1">
@@ -40,23 +43,30 @@ require '../controllers/mostra_livro.php';
                     <label>Tipo</label>
                     <input class="form-control" type="text" name="tipo" value="<?= $result['tipo']; ?>">
                 </div>
-                <div class="col-sm-6 col-12">
-                    <label>Foto</label>
-                    <input class="col-6 form-control" type="file">
+                <div class="col d-flex justify-content-center align-self-center mt-sm-4 mt-3">
+                    <div class="btn-group col-12 col-sm-4" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" value=1 name="btnradio" id="btnradio1" autocomplete="off" checked>
+                        <label class="btn btn-outline-info" for="btnradio1">Em mãos</label>
+
+                        <input type="radio" class="btn-check" value=0 name="btnradio" id="btnradio2" autocomplete="off">
+                        <label class="btn btn-outline-info" for="btnradio2">A receber</label>
+                    </div>
                 </div>
+                <!-- <div class="col-sm-6 col-12">
+                    <label>Foto</label>
+                    <input class="col-6 form-control" type="file" name="arquivo">
+                </div> -->
             </div>
             <div class="col d-flex justify-content-center align-self-center mt-sm-0 mt-3">
                 <button type="submit" class="btn btn-success col-sm-4 col-12 mt-3">Salvar</button>
             </div>
         </form>
     </div>
-    <div class="col-12 position-absolute bottom-0">
-        <footer>
-            <div class="flixed-bottom p-1 bg-dark text-white d-flex justify-content-center">
-                Mangateca by Fer - 2023 ©
-            </div>
-        </footer>
-    </div>
+    <footer>
+        <div class="fixed-bottom col-12 col-md-12 p-1 bg-dark text-white text-center ">
+            Mangateca by Fer - 2023 ©
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>

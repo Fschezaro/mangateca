@@ -5,14 +5,12 @@ if (!$_SESSION['logged']) {
     header('Location: login.php');
 }
 
+$iduser = $_SESSION['iduser'];
+
 require '../controllers/db.php';
 
-if (isset($_POST['pesquisa'])) {
-    $pesquisa = $_POST['pesquisa'];
-    $query = $conexao->prepare("SELECT * FROM livros WHERE estado = 0 AND recebido = 1 AND (titulo LIKE '%$pesquisa%' OR categoria LIKE '%$pesquisa%' OR autor LIKE '%$pesquisa%' OR editora LIKE '%$pesquisa%' OR tipo LIKE '%$pesquisa%' OR tipo LIKE '%$pesquisa%')");
-} else {
-    $query = $conexao->prepare("SELECT * FROM livros WHERE estado = 0 AND recebido = 1");
-}
+$query = $conexao->prepare("SELECT * FROM livros WHERE estado = 0 AND recebido = 1 AND relation = $iduser");
+
 $query->execute();
 $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -68,8 +66,8 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                             <td class="text-center"> <?= $livro["autor"]; ?></td>
                             <td class="text-center"> <?= $livro["editora"]; ?></td>
                             <td class="text-center"> <?= $livro["tipo"]; ?></td>
-                            <td class="text-center col-1"><a class="mx-2 col" href="edita_livro.php?id=<?= $livro['id']; ?>"><img src="../img/botao-editar.png" width="30px"></a></td>
-                            <td class="text-center col-1"><a class="col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>"><img src="../img/botao-de-energia.png" width="30px"></a></td>
+                            <td class="text-center col-1"><a class="mx-2 col" href="edita_livro.php?id=<?= $livro['id']; ?>"><img src="../img/botao-editar.png" width="30px" alt="Editar"></a></td>
+                            <td class="text-center col-1"><a class="col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>"><img src="../img/botao-de-energia.png" width="30px" alt="Ativar"></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
