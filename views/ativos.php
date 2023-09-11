@@ -23,8 +23,9 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
     <title>Mangateca</title>
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../css/iziToast.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <script src="../js/iziToast.min.js" type="text/javascript">
     iziToast.settings({
@@ -41,7 +42,6 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
         }
     });
 </script>
-<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 <script>
     $(document).ready(function() {
         $("#pesquisa").on("keyup", function() {
@@ -81,7 +81,7 @@ $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
                             <td class="text-center"> <?= $livro["autor"]; ?></td>
                             <td class="text-center"> <?= $livro["editora"]; ?></td>
                             <td class="text-center"> <?= $livro["tipo"]; ?></td>
-                            <td class="text-center col-1"><a class="mx-2 col" href="edita_livro.php?id=<?= $livro['id']; ?>"><img src="../img/botao-editar.png" width="30px" alt="Editar"></a></td>
+                            <td class="text-center col-1"><a class="mx-2 col" href="edita_livro.php?id=<?= $livro['id']; ?>"><span class="material-symbols-outlined">edit</span></a></td>
                             <td class="text-center col-1"><a class="col-3 col" href="../controllers/inativa_livro.php?id=<?= $livro['id']; ?>"><img src="../img/cancelar.png" width="30px" alt="Desativar"></a></td>
                         </tr>
                     <?php endforeach; ?>

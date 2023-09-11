@@ -1,1 +1,0 @@
-create table relations (idrealtion int not null auto_increment primary key,  );
