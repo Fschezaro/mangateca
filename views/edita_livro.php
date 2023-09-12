@@ -51,7 +51,8 @@ require '../controllers/mostra_livro.php';
                     <label>Valor</label>
                     <input class="form-control" type="text" name="valor" value="<?= $result['valor']; ?>">
                 </div>
-                <div class="col d-flex justify-content-center align-self-center mt-sm-4 mt-3">
+                <?php if ($result['recebido']) {
+                    echo '<div class="col d-flex justify-content-center align-self-center mt-sm-4 mt-3">
                     <div class="btn-group col-12 col-sm-6" role="group" aria-label="Basic radio toggle button group">
                         <input type="radio" class="btn-check" value=1 name="btnradio" id="btnradio1" autocomplete="off" checked>
                         <label class="btn btn-outline-info" for="btnradio1">Em mãos</label>
@@ -59,7 +60,19 @@ require '../controllers/mostra_livro.php';
                         <input type="radio" class="btn-check" value=0 name="btnradio" id="btnradio2" autocomplete="off">
                         <label class="btn btn-outline-info" for="btnradio2">A receber</label>
                     </div>
-                </div>
+                </div>';
+                } else {
+                    echo '<div class="col d-flex justify-content-center align-self-center mt-sm-4 mt-3">
+                        <div class="btn-group col-12 col-sm-6" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" value=1 name="btnradio" id="btnradio1" autocomplete="off">
+                            <label class="btn btn-outline-info" for="btnradio1">Em mãos</label>
+    
+                            <input type="radio" class="btn-check" value=0 name="btnradio" id="btnradio2" autocomplete="off"  checked>
+                            <label class="btn btn-outline-info" for="btnradio2">A receber</label>
+                        </div>
+                    </div>';
+                }
+                ?>
                 <!-- <div class="col-sm-6 col-12">
                     <label>Foto</label>
                     <input class="col-6 form-control" type="file" name="arquivo">

@@ -14,7 +14,7 @@ $query = $conexao->prepare("SELECT * FROM livros WHERE recebido = 0 AND relation
 $query->execute();
 $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
 
-$query = $conexao->prepare("SELECT SUM(valor) from livros WHERE estado = 1");
+$query = $conexao->prepare("SELECT SUM(valor) from livros WHERE estado = 1  AND relation = $iduser");
 
 $query->execute();
 $valor = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -87,7 +87,7 @@ $valor = $query->fetchAll(PDO::FETCH_ASSOC);
                             <td class="text-center "> <?= $livro["autor"]; ?></td>
                             <td class="text-center"> <?= $livro["editora"]; ?></td>
                             <td class="text-center"> <?= $livro["tipo"]; ?></td>
-                            <td class="text-center"> <?= $livro["valor"]; ?></td>
+                            <td class="text-center"> <?= $livro["valor"]  ?? 0; ?></td>
                             <td class="text-center"><a href="../controllers/recebelivro.php?id=<?= $livro['id']; ?>"><span class="material-symbols-outlined correto">check</span></a></td>
                             <td class="text-center"><a href=" edita_livro.php?id=<?= $livro['id']; ?>"><span class="material-symbols-outlined">edit</span></a></td>
                             <td class="text-center"><a href="../controllers/inativa_livro.php?id=<?= $livro['id']; ?>"><span class="material-symbols-outlined cancel">cancel</span></a></td>
@@ -97,8 +97,11 @@ $valor = $query->fetchAll(PDO::FETCH_ASSOC);
             </table>
         </div>
     </div>
-
-    <?php include '../components/footer.php'; ?>
+    <footer>
+        <div class="fixed-bottom col-12 col-md-12 p-1 bg-dark text-white d-flex justify-content-center">
+            Mangateca by Fer - 2023 ©
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
