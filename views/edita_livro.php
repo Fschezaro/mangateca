@@ -16,10 +16,14 @@ require '../controllers/mostra_livro.php';
 
 <body>
     <?php include '../components/header.php'; ?>
-    <!-- <div class="d-flex justify-content-center mt-4">
-        <img src="<?php print_r($result['pathi']); ?>" alt="" width="150px">
-    </div> -->
     <div class="container my-3">
+        <?php if ($_SESSION['redirecionamento'] == 'ativos') {
+            echo '<a class="btn btn-outline-primary rounded-5 mb-4" href="../views/ativos.php">Voltar</a>';
+        } else if ($_SESSION['redirecionamento'] == 'pendentes') {
+            echo '<a class="btn btn-outline-primary rounded-5 mb-4" href="../views/pendentes.php">Voltar</a>';
+        } else {
+            echo '<a class="btn btn-outline-primary rounded-5 mb-4" href="../views/inativos.php">Voltar</a>';
+        } ?>
         <form method="POST" action="../controllers/edita_livro.php">
             <div class="row row-cols-sm-2 row-cols-1">
                 <input type="hidden" name="id" value="<?= $result['id']; ?>">

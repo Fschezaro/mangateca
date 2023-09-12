@@ -30,6 +30,17 @@ $valor = $query->fetchAll(PDO::FETCH_ASSOC);
     <link rel="icon" type="image/png" href="../img/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined.cancel {
+            color: red;
+            font-variation-settings:
+                'FILL' 1,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
+    </style>
 </head>
 <script>
     $(document).ready(function() {
@@ -71,8 +82,8 @@ $valor = $query->fetchAll(PDO::FETCH_ASSOC);
                             <td class="text-center"> <?= $livro["editora"]; ?></td>
                             <td class="text-center"> <?= $livro["tipo"]; ?></td>
                             <td class="text-center"> <?= $livro["valor"]; ?></td>
-                            <td class="text-center col-1"><a class="mx-2 col" href="edita_livro.php?id=<?= $livro['id']; ?>"><img src="../img/botao-editar.png" width="30px" alt="Editar"></a></td>
-                            <td class="text-center col-1"><a class="col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>"><img src="../img/botao-de-energia.png" width="30px" alt="Ativar"></a></td>
+                            <td class="text-center col-1"><a class="mx-2 col" href="edita_livro.php?id=<?= $livro['id']; ?>"><span class="material-symbols-outlined">edit</span></a></td>
+                            <td class="text-center col-1"><a class="col-12" href="../controllers/ativa_livro.php?id=<?= $livro['id']; ?>"><span class="material-symbols-outlined cancel">cancel</span></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
