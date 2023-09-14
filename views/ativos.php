@@ -95,7 +95,7 @@ $valor = $query->fetchAll(PDO::FETCH_ASSOC);
                             <td class="text-center"> <?= $livro["autor"]; ?></td>
                             <td class="text-center"> <?= $livro["editora"]; ?></td>
                             <td class="text-center"> <?= $livro["tipo"]; ?></td>
-                            <td class="text-center"> R$<?= $livro["valor"]  ?? 0; ?></td>
+                            <td class="text-center"> R$ <?= $livro["valor"]  ?? 0; ?></td>
                             <td class="text-center col-1"><a class="mx-2 col" href="edita_livro.php?id=<?= $livro['id']; ?>"><span class="material-symbols-outlined">edit</span></a></td>
                             <td class="text-center col-1"><a class="col-3 col" href="../controllers/inativa_livro.php?id=<?= $livro['id']; ?>"><span class="material-symbols-outlined cancel">cancel</span></a></td>
                         </tr>
