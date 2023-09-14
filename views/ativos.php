@@ -40,7 +40,17 @@ $valor = $query->fetchAll(PDO::FETCH_ASSOC);
                 'GRAD' 0,
                 'opsz' 24
         }
+
+        .material-symbols-outlined.sair {
+            color: white;
+            font-variation-settings:
+                'FILL' 1,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
+        }
     </style>
+
 </head>
 <script src="../js/iziToast.min.js" type="text/javascript">
     iziToast.settings({
