@@ -9,7 +9,7 @@ $iduser = $_SESSION['iduser'];
 
 require '../controllers/db.php';
 
-$query = $conexao->prepare("SELECT * FROM livros WHERE estado = 0 AND recebido = 1 AND relation = $iduser");
+$query = $conexao->prepare("SELECT * FROM livros WHERE estado = 0 AND recebido = 1 AND relation = $iduser ORDER BY id");
 
 $query->execute();
 $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
