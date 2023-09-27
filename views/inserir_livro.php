@@ -48,7 +48,7 @@ if (!$_SESSION['logged']) {
                 </div>
                 <div class="col">
                     <label>valor</label>
-                    <input class="form-control mb-3" type="number" name="valor" placeholder="Insira o valor" min=0>
+                    <input class="form-control mb-3" type="number" step="any" name="valor" placeholder="Insira o valor" min=0>
                 </div>
                 <!-- <div class="col-sm-6 col-12">
                      <label>Foto</label>

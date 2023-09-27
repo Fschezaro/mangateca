@@ -91,9 +91,16 @@ $valor = $query->fetchAll(PDO::FETCH_ASSOC);
                 <thead>
                     <tr>
                         <th class="text-center">Titulo</th>
-                        <th class="text-center">Autor</th>
+                        <div class="">
+                            <th class="text-center">Categoria</th>
+                        </div>
+                        <div class="">
+                            <th class="text-center">Autor</th>
+                        </div>
                         <th class="text-center">Editora</th>
-                        <th class="text-center">Tipo</th>
+                        <div class="">
+                            <th class="text-center">Tipo</th>
+                        </div>
                         <th class="text-center">Valor</th>
                         <th colspan="2" class="text-center">Edição</th>
                     </tr>
@@ -102,9 +109,16 @@ $valor = $query->fetchAll(PDO::FETCH_ASSOC);
                     <?php foreach ($resultado as $key => $livro) : ?>
                         <tr>
                             <td class="text-center"> <?= $livro["titulo"]; ?></td>
-                            <td class="text-center"> <?= $livro["autor"]; ?></td>
+                            <div class="">
+                                <td class="text-center"> <?= $livro["categoria"]; ?></td>
+                            </div>
+                            <div class="">
+                                <td class="text-center"> <?= $livro["autor"]; ?></td>
+                            </div>
                             <td class="text-center"> <?= $livro["editora"]; ?></td>
-                            <td class="text-center"> <?= $livro["tipo"]; ?></td>
+                            <div class="">
+                                <td class="text-center"> <?= $livro["tipo"]; ?></td>
+                            </div>
                             <td class="text-center"> R$ <?= $livro["valor"]  ?? 0; ?></td>
                             <td class="text-center col-1"><a class="mx-2 col" href="edita_livro.php?id=<?= $livro['id']; ?>"><span class="material-symbols-outlined">edit</span></a></td>
                             <td class="text-center col-1"><a class="col-3 col" href="../controllers/inativa_livro.php?id=<?= $livro['id']; ?>"><span class="material-symbols-outlined cancel">cancel</span></a></td>

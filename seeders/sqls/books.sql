@@ -798,7 +798,7 @@ insert into livros (id,titulo,categoria,autor,editora,tipo,estado,recebido,pathi
 (default,'Fairy Tail Ice Trail n°2','Aventura','Hiro Mashima','JBC','Manga',1,1,null,2);
 
 insert into livros (id,titulo,categoria,autor,editora,tipo,estado,recebido,pathi,relation) values
-(default,'Samurai X n°1',''Ação'','Nobuhiro Watsuki','JBC','Manga',1,1,null,2),
+(default,'Samurai X n°1','Ação','Nobuhiro Watsuki','JBC','Manga',1,1,null,2),
 (default,'Samurai X n°2','Ação','Nobuhiro Watsuki','JBC','Manga',1,1,null,2),
 (default,'Samurai X n°3','Ação','Nobuhiro Watsuki','JBC','Manga',1,1,null,2),
 (default,'Samurai X n°4','Ação','Nobuhiro Watsuki','JBC','Manga',1,1,null,2),
