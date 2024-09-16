@@ -1,2 +1,2 @@
 # Mangateca
-Biblioteca para organização de mangar para Leonel
+Biblioteca para organização de mangas
